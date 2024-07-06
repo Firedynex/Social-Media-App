@@ -1,0 +1,15 @@
+.login-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6D5959;
+    font-weight: bold;
+    height: auto;
+    width: 5em;
+}

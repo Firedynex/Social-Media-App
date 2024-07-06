@@ -1,10 +1,11 @@
 import InputBox from "../UniversalComponents/InputBox";
+import "./Login.css";
 
 export default function Login() {
     return(
         <>
-            <div className="LoginCard">
-                <div className="LoginHeader">
+            <div className="login-card">
+                <div className="login-header">
                     <p>Login</p>
                 </div>
                 <InputBox headerName={"Username"} type={"text"}/>
