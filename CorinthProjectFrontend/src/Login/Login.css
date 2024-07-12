@@ -3,7 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #947F7F;
+    height: auto;
+    width: 500px;
 }
+
 .login-header{
     display: flex;
     align-items: center;

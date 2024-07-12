@@ -10,6 +10,11 @@ export default function Login() {
                 </div>
                 <InputBox headerName={"Username"} type={"text"}/>
                 <InputBox headerName={"Password"} type={"password"}/>
+                <a href="www.google.com">Forgot Password?</a>
+                <div className="button-div">
+                    <button>Login</button>
+                    <button>Sign Up</button>
+                </div>
             </div>
         </>
     );
