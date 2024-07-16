@@ -12,8 +12,8 @@ export default function Login() {
                 <InputBox headerName={"Password"} type={"password"}/>
                 <a href="www.google.com">Forgot Password?</a>
                 <div className="button-div">
-                    <button>Login</button>
-                    <button>Sign Up</button>
+                    <button className="login-buttons">Login</button>
+                    <button className="login-buttons">Sign Up</button>
                 </div>
             </div>
         </>
