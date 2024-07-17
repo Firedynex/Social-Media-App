@@ -8,8 +8,8 @@ export default function Login() {
                 <div className="login-header">
                     <p>Login</p>
                 </div>
-                <InputBox headerName={"Username"} type={"text"}/>
-                <InputBox headerName={"Password"} type={"password"}/>
+                <InputBox headerName={"Username"} type={"text"} placeholder={"Username"}/>
+                <InputBox headerName={"Password"} type={"password"} placeholder={"Password"}/>
                 <a href="www.google.com">Forgot Password?</a>
                 <div className="button-div">
                     <button className="login-buttons">Login</button>
