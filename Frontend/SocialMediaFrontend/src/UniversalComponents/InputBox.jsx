@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default function InputBox({headerName, type, placeholder}) {
+export default function InputBox({headerName, type, placeholder, required}) {
     return (
         <input type={type} name={headerName} placeholder={placeholder}></input>
     );
@@ -9,5 +9,6 @@ export default function InputBox({headerName, type, placeholder}) {
 InputBox.propTypes = {
     headerName: PropTypes.string,
     type: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    required: PropTypes.bool
 }

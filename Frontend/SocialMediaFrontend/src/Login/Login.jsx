@@ -5,7 +5,7 @@ export default function Login() {
     return(
         <>
             <div className="login-card">
-                <div className="login-header">
+                <div className="page-header">
                     <p>Login</p>
                 </div>
                 <InputBox headerName={"Username"} type={"text"} placeholder={"Username"}/>
