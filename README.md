@@ -12,7 +12,8 @@ This project is a social media web app that is a combination of Reddit and MySpa
 * Lists (tier lists, movie list, normal lists)
 * Commenting, upvoting, and downvoting
 * Profiles
-Users will be able to create and post these
+
+Users will be able to create and post these items and other people can comment, like, and dislike these items
 
 Run frontend:
 1. Using the terminal or git bash, switch into "SocialMediaFrontend" folder
