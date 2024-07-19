@@ -15,6 +15,12 @@ This project is a social media web app that is a combination of Reddit and MySpa
 
 Users will be able to create and post these items and other people can comment, like, and dislike these items
 
+Techstack:
+* Frontend: React
+* Backend: Java SpringBoot
+* Database: SQL
+* Hosting: Potentially Google Firebase
+  
 Run frontend:
 1. Using the terminal or git bash, switch into "SocialMediaFrontend" folder
 2. Type npm install
