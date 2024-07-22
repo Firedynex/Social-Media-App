@@ -1,9 +1,12 @@
 import InputBox from "../UniversalComponents/InputBox";
+import TitleBar from "../UniversalComponents/TitleBar/TitleBar.jsx";
+
 import "./Login.css";
 
 export default function Login() {
     return(
         <>
+            <TitleBar />
             <div className="login-card">
                 <div className="page-header">
                     <p>Login</p>
