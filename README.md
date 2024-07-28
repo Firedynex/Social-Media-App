@@ -16,6 +16,7 @@ This project is a social media web app that is a combination of Reddit and MySpa
 Users will be able to create and post these items and other people can comment, like, and dislike these items
 
 Lunacy Design: https://lun-us.icons8.com/d/s305jYmrPU2HYji7arAFtg?page=tH05jYmrPU2HYji7arAFtg&vp=1129,-759,6532,4203
+
 Google Doc For Requirements: https://docs.google.com/document/d/11Wzmr2UiqtyO66Ts_oLy7gjNXlYOG4y879VHv08yW9k/edit?usp=sharing
 
 Techstack:
