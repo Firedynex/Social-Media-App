@@ -4,6 +4,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotFoundPage from './ErrorPages/NotFoundPage.jsx'
 import Login from './Login/Login.jsx'
 import RegistrationPage from './RegistrationPages/RegistrationPage.jsx'
+import EventCreator from './EventCreator/EventCreator.jsx'
+import Achievement from './AchievementPage/Achievement.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,11 @@ const router = createBrowserRouter([
     element: <Login/>,
     errorElement: <NotFoundPage/>,
   },
+  {
+    path: "/create-achievement",
+    element: <Achievement/>,
+    errorElement: <NotFoundPage/>,
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
