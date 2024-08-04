@@ -9,9 +9,9 @@ export default function RegistrationPage() {
             <div id="registration-fields">
                 <p>Email Address*</p>
                 <InputBox headerName={"email-address-bar"} type={"email"} />
-                <p>Username</p>
+                <p>Username*</p>
                 <InputBox headerName={"username"} />
-                <p>Password</p>
+                <p>Password*</p>
                 <InputBox headerName={"password"} type={"password"} />
                 <p>Confirm Password</p>
                 <InputBox headerName={"password"} type={"password"}/>
