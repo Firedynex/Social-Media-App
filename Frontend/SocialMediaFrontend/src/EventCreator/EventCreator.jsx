@@ -27,7 +27,7 @@ export default function EventCreator() {
 
                 <div className="cars-and-reminder">
                     <FormControlLabel required control={<Checkbox />} label="Cars Necessary" />
-                    // add tick boxes for number of cars
+                    {/*<p> need to figure out how to add tick boxes for number of cars </p>**/}
 
                     <FormControlLabel required control={<Checkbox />} label="Send Email Reminder" />
                 </div>
