@@ -1,0 +1,18 @@
+.page-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #947F7F;
+    width: 45em;
+}
+
+.login-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6D5959;
+    font-weight: bold;
+    height: auto;
+    width: 5em;
+}
