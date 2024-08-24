@@ -1,6 +1,8 @@
 package social_media_app.backend.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,14 +13,14 @@ import social_media_app.backend.backend.service.UserService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
 
     @PostMapping("/register")
-    public String registerUser(@RequestBody User user) {
-        userService.saveUser(user);
-        return "Successfully added User to DB";
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.saveUser(user));
     }
 
 }
