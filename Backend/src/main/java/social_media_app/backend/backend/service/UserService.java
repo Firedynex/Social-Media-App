@@ -1,7 +1,6 @@
 package social_media_app.backend.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +19,9 @@ public class UserService {
         String encryptedPassword = this.passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
         return userRepository.save(user);
+    }
+
+    public void updateUsername(String username) {
+        
     }
 }

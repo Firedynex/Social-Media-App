@@ -22,5 +22,4 @@ public class UserController {
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.saveUser(user));
     }
-
 }

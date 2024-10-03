@@ -1,4 +1,3 @@
-import InputBox from "../UniversalComponents/InputBox";
 
 export default function MovieListPage() {
     return (
