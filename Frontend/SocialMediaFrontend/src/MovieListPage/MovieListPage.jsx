@@ -1,10 +1,28 @@
+import TitleBar from "../UniversalComponents/TitleBar/TitleBar.jsx";
+import { useNavigate } from 'react-router-dom';
+import './MovieListPage.css'; 
 
 export default function MovieListPage() {
+    const navigate = useNavigate();
+
+    const goToEventCreator = () => {
+        navigate('/eventCreator');
+    };
+
+    const goToListCreator = () => {
+        navigate('/listCreator');
+    };
+    
     return (
         <>
+            <div className="navigate-buttons">
+                <button onClick={goToEventCreator}>Event Creator</button>
+                <button onClick={goToListCreator}>List Creator</button>
+            </div>
+            <TitleBar />
             <div className="movie-list-page">
                 <div className="page-header">
-                    <p>Movie List Name</p> {/* change based on the actual name of the list */}
+                    <h1>Movie List Name</h1> 
                 </div>
 
                 <button>Edit</button>
@@ -25,12 +43,9 @@ export default function MovieListPage() {
                 </div>
 
                 <div className="comment-section">
-
                     {/* comments left by users go here */}
-
                 </div>
-
             </div>
         </>
-    )
+    );
 }
