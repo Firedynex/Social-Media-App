@@ -5,7 +5,7 @@ import NotFoundPage from './ErrorPages/NotFoundPage.jsx'
 import Login from './Login/Login.jsx'
 import RegistrationPage from './RegistrationPages/RegistrationPage.jsx'
 import Achievement from './AchievementPage/Achievement.jsx'
-
+import MovieListPage from './MovieListPage/MovieListPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +26,11 @@ const router = createBrowserRouter([
   {
     path: "/create-achievement",
     element: <Achievement/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: "/MovieListPage",
+    element: <MovieListPage/>,
     errorElement: <NotFoundPage/>,
   }
 ])
