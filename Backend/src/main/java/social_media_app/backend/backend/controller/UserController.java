@@ -13,7 +13,8 @@ import social_media_app.backend.backend.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class UserController {
     @Autowired
     private UserService userService;
