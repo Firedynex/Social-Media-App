@@ -21,7 +21,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void updateUsername(String username) {
-        
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public boolean validateUser(String email, String rawPass) {
+        User existingUser = findByEmail(email);
+        return existingUser != null && passwordEncoder.matches(rawPass, existingUser.getPassword());
     }
 }

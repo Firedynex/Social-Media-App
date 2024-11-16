@@ -17,18 +17,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home").permitAll()
-				.anyRequest().authenticated()
-			)
-			.formLogin((form) -> form
-				.loginPage("/login")
-				.permitAll()
-			)
-			.logout((logout) -> logout.permitAll());
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .cors().and().csrf().disable() // Disable CSRF if needed (use cautiously)
+            .authorizeRequests()
+            .requestMatchers("/users/register", "/users/login").permitAll() // Allow public access
+            .anyRequest().authenticated() // Protect all other endpoints
+            .and()
+            .formLogin().disable(); // Disable default form login if using custom authentication
 
-		return http.build();
+        return http.build();
     }
 }

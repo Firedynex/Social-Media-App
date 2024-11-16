@@ -20,7 +20,21 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.saveUser(user));
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        if (userService.findByEmail(user.getEmail()) != null) {
+            return ResponseEntity.badRequest().body("A user with this email address already exists!");
+        }
+        userService.saveUser(user);
+        return ResponseEntity.ok("User registered successfully!");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User user) {
+        User existingUser = userService.findByEmail(user.getEmail());
+        if (userService.validateUser(existingUser.getEmail(), user.getPassword())) {
+            return ResponseEntity.ok("Login successful!");
+        } else {
+            return ResponseEntity.status(401).body("Invalid credentials!");
+        }
     }
 }
