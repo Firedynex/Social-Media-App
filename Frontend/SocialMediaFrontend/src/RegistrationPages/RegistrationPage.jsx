@@ -39,7 +39,7 @@ export default function RegistrationPage() {
         alert('Registration successful');
       } catch (err) {
         console.error('There was a problem with the fetch operation:', err);
-        alert('Error registering user');
+        alert('User already exists');
       }
     };
     

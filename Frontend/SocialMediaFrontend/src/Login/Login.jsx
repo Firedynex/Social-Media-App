@@ -4,12 +4,31 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const navigate = useNavigate();
-    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const handleLoginClick = () => {
-        navigate('../movieListPage'); //home page? 
-    };
+    const handleLoginClick = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8080/api/auth/login', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+            if (response.ok) {
+                const data = await response.text();
+                console.log(data);
+                navigate("/create-achievement");
+            } else {
+                const errorText = await response.text();
+                alert(errorText);
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    }
 
     const handleSignUpClick = () => {
         navigate('/register'); 
@@ -22,12 +41,12 @@ export default function Login() {
                 <div className="page-header">
                     <p>Login</p>
                 </div>
-                <input className="login-input" id="userName" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} required />
+                <input className="login-input" id="email" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input className="login-input" id="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}required />
                 <a href="www.google.com">Forgot Password?</a>
                 <div className="button-div">
                     <button
-                        type="button"
+                        type="submit"
                         className="login-buttons"
                         onClick={handleLoginClick}
                     >
