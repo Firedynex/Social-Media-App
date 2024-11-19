@@ -1,16 +1,25 @@
 package social_media_app.backend.backend.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class User {
     @Id
+    @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "username", nullable = false)
     private String username;
+
+    @Column(name = "firstName", nullable = false)
     private String firstName;
+
+    @Column(name = "lastName", nullable = false)
     private String lastName;
+
+    @Column(name = "password", nullable = false)
     private String password;
 
 
