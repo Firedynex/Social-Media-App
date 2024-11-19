@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TitleBar from "../UniversalComponents/TitleBar/TitleBar.jsx";
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ export default function Login() {
             <TitleBar />
             <div className="login-card">
                 <div className="page-header">
-                    <p>Login</p>
+                    <p>Log in</p>
                 </div>
                 <input className="login-input" id="email" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input className="login-input" id="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}required />
@@ -50,7 +51,7 @@ export default function Login() {
                         className="login-buttons"
                         onClick={handleLoginClick}
                     >
-                        Login
+                        Log in
                     </button>
                     <button
                         type="button"

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import './RegistrationPage.css';
+import TitleBar from "../UniversalComponents/TitleBar/TitleBar";
 
 export default function RegistrationPage() {
     const [email, setEmail] = useState();
@@ -44,8 +46,10 @@ export default function RegistrationPage() {
     };
     
     return (
-      <form onSubmit={onSubmit}>
-        <div>
+      <>
+      <TitleBar />
+      <form className="sign-in" onSubmit={onSubmit}>
+        <div >
           <label>Email</label>
           <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
@@ -71,5 +75,6 @@ export default function RegistrationPage() {
         </div>
         <button type="submit">Register</button>
       </form>
+    </>
     );
 }

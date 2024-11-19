@@ -2,7 +2,7 @@
 
 .title-bar {
   width: 100%;
-  background-color: #ebb760;
+  background-color: black;
   color: white;
   text-shadow: 5px 0 black;
   display: flex;
@@ -10,9 +10,26 @@
   justify-content: center;
   gap: 5%;
   height: 15vh;
+  position: relative;
 }
+
+.title-bar img {
+  position: absolute;
+  left: 5%;
+}
+
+.title-bar #title-name {
+  margin: 0 auto;
+}
+
+
 
 #title-name {
   font-family: Orbitron;
   font-size: 5em;
+}
+
+img{
+  width: 150px;
+  height: 150px;
 }
