@@ -3,7 +3,7 @@ package social_media_app.backend.backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,40 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import social_media_app.backend.backend.model.TextPost;
-import social_media_app.backend.backend.model.User;
-import social_media_app.backend.backend.repository.TextPostRepository;
-import social_media_app.backend.backend.repository.UserRepository;
+import social_media_app.backend.backend.service.TextPostService;
 
 @RestController
 @RequestMapping("/TextPost")
 
 public class TextPostController {
     @Autowired
-    private TextPostRepository textPostRepository;
+    private TextPostService textPostService;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    public TextPostController(TextPostRepository textPostRepository, UserRepository userRepository) {
-        this.textPostRepository = textPostRepository;
-        this.userRepository = userRepository;
+    /**
+     * Handles creating a post.
+     * @param post Post object containing content and user association.
+     * @return Created post details.
+     */
+    @PostMapping
+    public ResponseEntity<?> createTextPost(@RequestBody TextPost textPost) {
+        return ResponseEntity.ok(textPostService.createTextPost(textPost));
     }
 
-    @PostMapping("/user/{email}")
-    public TextPost createPost(@PathVariable String email, @RequestBody TextPost post) {
-        // Find the user by email
-        User user = userRepository.findById(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        // Set the user for the post and save
-        post.setUser(user);
-        return textPostRepository.save(post);
-    }
-
-    @GetMapping("/user/{email}")
-    public List<TextPost> getPostsByUser(@PathVariable String email) {
-        // Fetch posts by the user's email
-        return textPostRepository.findByUserEmail(email);
+    /**
+     * Retrieves all posts for a specific user by email.
+     * @param email User's email.
+     * @return List of posts associated with the user.
+     */
+    @GetMapping("/{email}")
+    public ResponseEntity<List<TextPost>> getUserTextPosts(@PathVariable String email) {
+        return ResponseEntity.ok(textPostService.getUserTextPosts(email));
     }
 }

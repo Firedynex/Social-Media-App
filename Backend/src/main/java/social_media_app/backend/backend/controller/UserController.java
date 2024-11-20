@@ -19,6 +19,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Handles user registration.
+     * @param user
+     * @return
+     */
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         if (userService.findByEmail(user.getEmail()) != null) {

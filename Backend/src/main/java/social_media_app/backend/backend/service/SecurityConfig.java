@@ -31,10 +31,10 @@ public class SecurityConfig {
         http
             .cors().and().csrf().disable() // Disable CSRF if needed (use cautiously)
             .authorizeRequests()
-            .requestMatchers("/users/register", "/users/login").permitAll() // Allow public access
-            .anyRequest().authenticated() // Protect all other endpoints
-            .and()
-            .formLogin().disable(); // Disable default form login if using custom authentication
+            .requestMatchers("/users/register", "/users/login", "/TextPost/**").permitAll() // Allow public access
+            .anyRequest().authenticated(); // Protect all other endpoints
+            // .and()
+            // .formLogin().disable(); // Disable default form login if using custom authentication
 
         return http.build();
     }
