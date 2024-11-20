@@ -1,4 +1,4 @@
-package social_media_app.backend.backend;
+package org.circl.dbms.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
