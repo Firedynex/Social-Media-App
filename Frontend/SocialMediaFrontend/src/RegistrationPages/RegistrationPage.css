@@ -2,16 +2,16 @@
 
 .sign-in {
     background-color: #1e1e1e;
-    padding: 1.5rem; /* Reduced padding for a shorter form */
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 500px; /* Keep the width consistent */
+    width: 500px; /* Increased width */
     margin: 2rem auto; /* Center horizontally */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center child elements */
-    max-height: 80vh; /* Optional: Limit the maximum height */
+    height: 50%;
 }
 
 /* Form labels */
@@ -25,18 +25,17 @@
 }
 
 /* Input boxes */
-/* Adjust input boxes and spacing */
 .sign-in input {
-    width: 90%;
-    padding: 0.7rem; /* Slightly smaller padding for input boxes */
-    margin: 0.6rem 0; /* Reduced margin to save space */
+    width: 90%; /* Adjust width for centering */
+    padding: 0.8rem;
+    margin: 0.8rem 0;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    background-color: #000000 !important;
-    color: #ffffff !important;
+    background-color: #000000 !important; /* Ensure black background */
+    color: #ffffff !important; /* Make input text white */
     font-size: 1rem;
     outline: none;
-    text-align: center;
+    text-align: center; /* Center text inside the input */
 }
 
 /* Placeholder text */
@@ -52,7 +51,6 @@
 
 /* Submit button */
 .sign-in button {
-    margin-top: 1rem; /* Reduced margin above the button */
     background-color: #ffffff;
     color: #121212;
     border: none;

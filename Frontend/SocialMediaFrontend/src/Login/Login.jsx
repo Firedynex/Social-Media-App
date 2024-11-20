@@ -11,7 +11,7 @@ export default function Login() {
     const handleLoginClick = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/api/auth/login', {
+            const response = await fetch('http://localhost:8080/users/login', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export default function Login() {
             if (response.ok) {
                 const data = await response.text();
                 console.log(data);
-                navigate("/create-achievement");
+                navigate("/HomePage");
             } else {
                 const errorText = await response.text();
                 alert(errorText);

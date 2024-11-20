@@ -1,55 +1,60 @@
 import { useState } from "react";
 import './RegistrationPage.css';
 import TitleBar from "../UniversalComponents/TitleBar/TitleBar";
+import { useNavigate } from 'react-router-dom';
 
 export default function RegistrationPage() {
-    const [email, setEmail] = useState();
-    const [username, setUsername] = useState();
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmPassword] = useState();
-    
-    const onSubmit = async (e) => {
-      e.preventDefault();
-      if (password !== confirmPassword) {
-        alert('Passwords do not match');
-        return;
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+  
+    try {
+      const response = await fetch('http://localhost:8080/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          firstName,
+          lastName,
+          username,
+          password,
+        }),
+      });
+  
+      // Check if the response is OK (status code 200-299)
+      if (!response.ok) {
+        const errorMessage = await response.text(); // Read plain text error
+        throw new Error(errorMessage);
       }
-    
-      try {
-        const response = await fetch('http://localhost:8080/users/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email,
-            firstName,
-            lastName,
-            username,
-            password,
-          }),
-        });
-    
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-    
-        const resData = await response.json();
-        console.log(resData);
-        alert('Registration successful');
-      } catch (err) {
-        console.error('There was a problem with the fetch operation:', err);
-        alert('User already exists');
-      }
-    };
-    
-    return (
-      <>
+  
+      // Handle plain text success response
+      const successMessage = await response.text();
+      alert(successMessage); // Display server response
+      navigate('/HomePage');
+    } catch (err) {
+      console.error('There was a problem with the fetch operation:', err.message);
+      alert(err.message || 'An error occurred');
+    }
+  };
+
+  return (
+    <>
       <TitleBar />
       <form className="sign-in" onSubmit={onSubmit}>
-        <div >
+        <div>
           <label>Email</label>
           <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
@@ -76,5 +81,5 @@ export default function RegistrationPage() {
         <button type="submit">Register</button>
       </form>
     </>
-    );
+  );
 }
