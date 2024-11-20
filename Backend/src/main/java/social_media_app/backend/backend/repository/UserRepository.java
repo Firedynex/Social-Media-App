@@ -9,3 +9,5 @@ import social_media_app.backend.backend.model.User;
 public interface UserRepository extends JpaRepository<User, String> {
     User findByEmail(String email);
 }
+
+fefe
