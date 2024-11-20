@@ -8,4 +8,4 @@ import social_media_app.backend.backend.model.User;
 @Repository
 public interface UserProfileRepository extends JpaRepository<User, Integer> {
     
-}
+}fefe
