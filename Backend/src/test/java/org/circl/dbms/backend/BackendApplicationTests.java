@@ -1,4 +1,4 @@
-package social_media_app.backend.backend;
+package org.circl.dbms.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
