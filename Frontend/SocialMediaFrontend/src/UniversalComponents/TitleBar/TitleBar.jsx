@@ -1,10 +1,10 @@
 import './TitleBar.css'
 export default function TitleBar() {
   return (
-    <div class='title-bar'>
-      <img src='https://placehold.co/100' />
-      <span id='title-name'>Linkup</span>
-      <img src='https://placehold.co/100' />
+    <div className='title-bar'>
+      <img src='../circlLogo.png' />
+      <span id='title-name'>Circl</span>
+
     </div>
   )
 }
