@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     @GetMapping
     public ResponseEntity<String> sayHello() {
-        return ResponseEntity.ok("HELLO WORLD");
+        return ResponseEntity.ok("HELLO FROM SECURED ENDPOINT");
     }
 }
