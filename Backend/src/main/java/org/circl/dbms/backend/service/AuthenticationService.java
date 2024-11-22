@@ -21,6 +21,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
         .firstName(request.getFirstName())
