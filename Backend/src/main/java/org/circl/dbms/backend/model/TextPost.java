@@ -33,8 +33,4 @@ public class TextPost {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "creation_date", nullable = false, updatable = false) 
-    @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date createdAt = new java.util.Date();
-
 }
