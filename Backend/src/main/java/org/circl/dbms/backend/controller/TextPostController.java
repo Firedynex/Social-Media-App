@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +29,6 @@ public class TextPostController {
 
     @PostMapping
     public ResponseEntity<TextPost> createTextPost(@RequestBody TextPostDto textPostDto) {
-        //TextPost textPost = textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent());
         return ResponseEntity.ok(textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent()));
     }
 }
