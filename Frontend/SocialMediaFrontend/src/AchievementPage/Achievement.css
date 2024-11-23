@@ -1,90 +1,92 @@
-body {
+/* General Styling */
+.achievements-form {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 50%;
-    margin: auto;
-    background-color: #4b3c3c;
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-    color: white;
-    border-radius: 8px;
+    background-color: #121212;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
-.header {
+.achievements-form h1 {
     text-align: center;
+    color: #fff;
     margin-bottom: 20px;
 }
 
-.header img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid white;
-    margin-bottom: 10px;
+.message {
+    text-align: center;
+    color: #4caf50;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensures group stays within container */
 }
 
 label {
-    display: block;
-    margin: 10px 0 5px;
-    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #aaa;
 }
 
-input[type="text"], textarea {
-    width: 100%;
+input, textarea {
+    font-size: 1rem;
     padding: 10px;
-    margin: 5px 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: black;
-    background-color: #f9f9f9;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+    color: #fff;
+    width: 100%; /* Ensures inputs fit within container */
+    box-sizing: border-box; /* Includes padding and borders */
+    max-width: 100%; /* Prevent overflow */
 }
 
 textarea {
-    resize: vertical;
+    resize: none; /* Prevent resizing */
+    height: 100px; /* Sets fixed height for textarea */
 }
 
-.date-container {
-    display: flex;
-    justify-content: space-between;
+/* Explicitly restrict textarea dimensions */
+textarea#content {
+    overflow: auto; /* Enable scrolling if necessary */
+    display: block;
 }
 
-.date-container div {
-    width: 48%;
+/* Focus State */
+input:focus, textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 5px #4caf50;
 }
 
-.date-container label {
-    margin-top: 10px;
-}
-
-.date-container input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: black;
-    background-color: #f9f9f9;
-}
-
-.btn-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.btn-container button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
+/* Styled Submit Button */
+.submit-button {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%; /* Ensures button aligns with inputs */
+    box-sizing: border-box;
 }
 
-.btn-container button:hover {
-    background-color: #4cae4c;
+.submit-button:hover {
+    background-color: #fff;
+    color: #000;
 }

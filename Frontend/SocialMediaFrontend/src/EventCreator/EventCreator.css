@@ -1,5 +1,5 @@
 /* General Styling */
-.text-post-form {
+.event-creation-page {
     font-family: Arial, sans-serif;
     max-width: 600px;
     margin: 50px auto;
@@ -11,7 +11,7 @@
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
-.text-post-form h1 {
+.event-creation-page h1 {
     text-align: center;
     color: #fff;
     margin-bottom: 20px;
@@ -42,7 +42,7 @@ label {
     color: #aaa;
 }
 
-textarea {
+input, textarea {
     font-size: 1rem;
     padding: 10px;
     border: 1px solid #555;
@@ -51,11 +51,14 @@ textarea {
     color: #fff;
     width: 100%;
     box-sizing: border-box;
-    resize: none; /* Prevent resizing */
-    height: 150px; /* Fixed height for textarea */
 }
 
-textarea:focus {
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+input:focus, textarea:focus {
     border-color: #4caf50;
     outline: none;
     box-shadow: 0 0 5px #4caf50;
