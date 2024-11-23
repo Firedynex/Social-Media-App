@@ -20,6 +20,11 @@ public class JwtService {
     
     private static final String SECRET_KEY = "7f0daf9e630f0a5d195cf3f994cb4977ff9ac74e0e7cc69695ec490104ec71ab";
     
+    /**
+     * Gets the email from the given JWT token.
+     * @param token JWT token for the current session.
+     * @return Email of the user associated with the JWT token.
+     */
     public String extractEmail(String token) {
         return exctractClaim(token, Claims::getSubject);
     }
@@ -33,6 +38,12 @@ public class JwtService {
         return generateToken(new HashMap<>(), userDetails);
     }
 
+    /**
+     * Generates a JWT token for the given session.
+     * @param extractClaims
+     * @param userDetails
+     * @return A String that represents the JWT token.
+     */
     public String generateToken(Map<String, Object> extractClaims, UserDetails userDetails) {
         return Jwts
         .builder()

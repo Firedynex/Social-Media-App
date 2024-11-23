@@ -16,11 +16,21 @@ public class AuthenticationController {
     
     private final AuthenticationService authenticationService;
 
+    /**
+     * Post request to register the user into the database.
+     * @param request Payload with required information to register.
+     * @return Status code of the registration as well as a JWT session token.
+     */
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authenticationService.register(request));
     }
 
+    /**
+     * Post request to login to the system.
+     * @param request Payload with email and password to login into the system.
+     * @return Status code of the login as well as the JWT session token.
+     */
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
         return ResponseEntity.ok(authenticationService.authenticate(request));

@@ -22,6 +22,11 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     
+    /**
+     * Registers the user into the database.
+     * @param request Request sent from the user to register.
+     * @return AuthenticationResponse stating the JWT token string for the session.
+     */
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
         .firstName(request.getFirstName())
@@ -37,6 +42,11 @@ public class AuthenticationService {
         .build();
     }
 
+    /**
+     * Logs the user into the system.
+     * @param request Authentication Request that the user supplies indicating they want to login.
+     * @return An Authentication Response with a JWT token for the session.
+     */
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail())
