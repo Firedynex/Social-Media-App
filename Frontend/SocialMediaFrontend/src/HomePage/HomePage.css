@@ -1,0 +1,82 @@
+/* General Styling */
+.homepage {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #000;
+}
+
+.homepage-header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid #fff;
+}
+
+.homepage-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.homepage-header p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.homepage-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Section Styling */
+section {
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #121212;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+section h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.posts-container, .events-container, .achievements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual Item Styling */
+.post, .event, .achievement {
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.post:hover, .event:hover, .achievement:hover {
+    background-color: #333;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+/* Text Colors */
+.post, .event, .achievement p {
+    color: #ccc;
+}
+
+.post h3, .event h3, .achievement h3 {
+    color: #fff;
+    margin-bottom: 5px;
+}

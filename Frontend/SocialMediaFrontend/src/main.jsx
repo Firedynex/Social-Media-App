@@ -6,7 +6,7 @@ import Login from './Login/Login.jsx'
 import RegistrationPage from './RegistrationPages/RegistrationPage.jsx'
 import Achievement from './AchievementPage/Achievement.jsx'
 import MovieListPage from './MovieListPage/MovieListPage.jsx';
-//import HomePage from './HomePage/HomePage.jsx';
+import HomePage from './HomePage/HomePage.jsx';
 //import CreateTextPost from './CreateTextPost/CreateTextPost.jsx'
 
 const router = createBrowserRouter([
@@ -35,11 +35,11 @@ const router = createBrowserRouter([
     element: <MovieListPage/>,
     errorElement: <NotFoundPage/>,
   },
-  // {
-  //   path: "/HomePage",
-  //   element: <HomePage/>,
-  //   errorElement: <NotFoundPage/>,
-  // },
+  {
+    path: "/HomePage",
+    element: <HomePage/>,
+    errorElement: <NotFoundPage/>,
+  },
   // {
   //   path: "/CreateTextPost",
   //   element: <CreateTextPost/>,
