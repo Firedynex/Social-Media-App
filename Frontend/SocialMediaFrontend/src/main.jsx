@@ -6,9 +6,9 @@ import Login from './Login/Login.jsx'
 import RegistrationPage from './RegistrationPages/RegistrationPage.jsx'
 import Achievement from './AchievementPage/Achievement.jsx'
 import MovieListPage from './MovieListPage/MovieListPage.jsx';
-import UserProfile from './UserProfilePage/UserProfile.jsx'
-//import HomePage from './HomePage/HomePage.jsx';
-//import CreateTextPost from './CreateTextPost/CreateTextPost.jsx'
+import HomePage from './HomePage/HomePage.jsx';
+import CreateTextPost from './CreateTextPost/CreateTextPost.jsx'
+import EventCreator from './EventCreator/EventCreator.jsx'
 
 const router = createBrowserRouter([
   {
@@ -32,20 +32,20 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage/>,
   },
   {
-    path: "/UserProfilePage",
-    element: <UserProfile/>,
+    path: "/HomePage",
+    element: <HomePage/>,
     errorElement: <NotFoundPage/>,
   },
-  // {
-  //   path: "/HomePage",
-  //   element: <HomePage/>,
-  //   errorElement: <NotFoundPage/>,
-  // },
-  // {
-  //   path: "/CreateTextPost",
-  //   element: <CreateTextPost/>,
-  //   errorElement: <NotFoundPage/>,
-  // }
+  {
+    path: "/CreateTextPost",
+    element: <CreateTextPost/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: "/CreateEvent",
+    element: <EventCreator/>,
+    errorElement: <NotFoundPage/>,
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
