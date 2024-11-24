@@ -22,8 +22,8 @@ public class TextPostController {
     private final TextPostService textPostService;
 
     @GetMapping("/user/{email}")
-    public ResponseEntity<List<TextPost>> getPostsByUser(@PathVariable String email) {
-        List<TextPost> textPosts = textPostService.getTextPostsByUser(email);
+    public ResponseEntity<List<TextPostDto>> getPostsByUser(@PathVariable String email) {
+        List<TextPostDto> textPosts = textPostService.getTextPostsByUser(email);
         return ResponseEntity.ok(textPosts);
     }
 
