@@ -22,7 +22,7 @@ public class UserController {
         return ResponseEntity.ok("HELLO FROM SECURED ENDPOINT");
     }
 
-    @GetMapping("/test/{email}")
+    @GetMapping("/{email}")
     public ResponseEntity<User> getUser(@PathVariable String email) {
         return ResponseEntity.ok(userService.getUser(email));
     }
