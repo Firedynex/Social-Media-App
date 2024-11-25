@@ -24,7 +24,7 @@ public class TextPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 280)
+    @Column(name = "content", nullable = false, length = 280)
     private String textContent;
     
     @ManyToOne
