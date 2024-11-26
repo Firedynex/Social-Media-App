@@ -19,7 +19,7 @@ public class AchievementService {
     private final UserRepository userRepository;
     private final AchievementRepository achievementRepository;
 
-    public Achievement saveAchievement(String email, String description, String date, String title) {
+    public void saveAchievement(String email, String description, String date, String title) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
@@ -33,7 +33,7 @@ public class AchievementService {
         .title(title)
         .build();
 
-        return achievementRepository.save(achievement);
+        achievementRepository.save(achievement);
     }
 
     public List<AchievementDto> getAchievementsByUser(String email) {

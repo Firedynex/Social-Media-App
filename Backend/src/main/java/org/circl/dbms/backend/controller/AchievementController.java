@@ -29,7 +29,8 @@ public class AchievementController {
     }
 
     @PostMapping
-    public ResponseEntity<Achievement> createAchievement(@RequestBody AchievementDto achievementDto) {
-        return ResponseEntity.ok(achievementService.saveAchievement(achievementDto.getEmail(), achievementDto.getDescription(), achievementDto.getDate(), achievementDto.getTitle()));
+    public ResponseEntity<String> createAchievement(@RequestBody AchievementDto achievementDto) {
+        achievementService.saveAchievement(achievementDto.getEmail(), achievementDto.getDescription(), achievementDto.getDate(), achievementDto.getTitle());
+        return ResponseEntity.ok("Achievement posted");
     }
 }

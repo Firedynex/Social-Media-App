@@ -19,14 +19,14 @@ public class TextPostService {
     private final TextPostRepository textPostRepository;
     private final UserRepository userRepository;
 
-    public TextPost saveTextPost(String email, String content) {
+    public void saveTextPost(String email, String content) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
         }
         TextPost textPost = TextPost.builder().textContent(content).user(user).build();
         
-        return textPostRepository.save(textPost);
+        textPostRepository.save(textPost);
     }
 
     public List<TextPostDto> getTextPostsByUser(String email) {

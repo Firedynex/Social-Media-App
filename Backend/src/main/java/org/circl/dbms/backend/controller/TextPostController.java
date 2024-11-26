@@ -28,7 +28,8 @@ public class TextPostController {
     }
 
     @PostMapping
-    public ResponseEntity<TextPost> createTextPost(@RequestBody TextPostDto textPostDto) {
-        return ResponseEntity.ok(textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent()));
+    public ResponseEntity<String> createTextPost(@RequestBody TextPostDto textPostDto) {
+        textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent());
+        return ResponseEntity.ok("Text posted");
     }
 }
