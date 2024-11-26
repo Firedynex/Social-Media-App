@@ -21,7 +21,7 @@ public class EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-    public Response saveEvent(String email, String startDate, String endDate, String location, String description) {
+    public Response saveEvent(String email, String startDate, String endDate, String location, String description, String title) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
@@ -31,6 +31,7 @@ public class EventService {
         .endDate(endDate)
         .location(location)
         .description(description)
+        .title(title)
         .user(user)
         .build();
 
@@ -50,7 +51,7 @@ public class EventService {
 
         return eventRepository.findByUserId(user.getId())
         .stream()
-        .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription()))
+        .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle()))
         .collect(Collectors.toList());
     }
 

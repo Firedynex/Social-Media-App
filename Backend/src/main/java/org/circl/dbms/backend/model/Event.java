@@ -1,7 +1,5 @@
 package org.circl.dbms.backend.model;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +36,8 @@ public class Event {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "title", nullable = false, length = 280)
+    private String title;
     // @Column(name = "attendee_capacity", nullable = false) 
     // private int attendeeCapacity;
 
