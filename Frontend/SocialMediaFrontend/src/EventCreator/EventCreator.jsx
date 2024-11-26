@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './EventCreator.css';
+import {jwtDecode }from "jwt-decode"; // Correctly imported as default
+import Cookies from "js-cookie";
 
 const EventCreationPage = () => {
     const [formData, setFormData] = useState({
-        eventDate: '',
-        eventLocation: '',
-        eventTime: '',
-        eventContent: '',
-        attendeeCapacity: '',
-        eventTitle: '',
+        startDate: '',
+        endDate: '',
+        location: '',
+        description: '',
+        title: '',
     });
 
+    const token = Cookies.get('jwtToken');
+    const decodedToken = jwtDecode(token);
+    const email = decodedToken.sub;
+
     const navigate = useNavigate();
-    const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,31 +27,40 @@ const EventCreationPage = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
 
-        const { eventDate, eventLocation, eventTime, eventContent, attendeeCapacity, eventTitle } = formData;
+        const { startDate, endDate, location, description, title } = formData;
 
         // Validate inputs
-        if (!eventDate || !eventLocation || !eventTime || !eventContent || !attendeeCapacity || !eventTitle) {
+        if (!startDate || !endDate || !location || !description || !title) {
             alert('Please fill in all fields.');
             return;
         }
 
-        if (isNaN(attendeeCapacity) || attendeeCapacity <= 0) {
-            alert('Attendee capacity must be a positive number.');
+        if (new Date(startDate) > new Date(endDate)) {
+            alert('Start date cannot be later than end date.');
             return;
         }
 
         try {
-            const response = await fetch('http://localhost:8080/Event', {
+            const response = await fetch('http://localhost:8080/events', {
                 method: 'POST',
                 headers: {
+                    "Authorization": `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    email, // Include the email in the request body
+                    startDate,
+                    endDate,
+                    location,
+                    description,
+                    title,
+                }),
             });
 
             if (response.ok) {
                 const data = await response.text();
                 console.log(data);
+                alert('Event created successfully!');
                 navigate('/HomePage'); // Navigate to the homepage upon success
             } else {
                 const errorText = await response.text();
@@ -62,85 +75,70 @@ const EventCreationPage = () => {
     return (
         <div className="event-creation-page">
             <h1>Create an Event</h1>
-            {message && <p className="message">{message}</p>}
             <form onSubmit={handleCreate}>
-                {/* Event Title */}
+                {/* Title */}
                 <div className="form-group">
-                    <label htmlFor="eventTitle">Event Title</label>
+                    <label htmlFor="title">Title</label>
                     <input
                         type="text"
-                        id="eventTitle"
-                        name="eventTitle"
+                        id="title"
+                        name="title"
                         placeholder="Enter the event title"
-                        value={formData.eventTitle}
+                        value={formData.title}
                         onChange={handleChange}
                         required
                     />
                 </div>
 
-                {/* Event Date */}
+                {/* Start Date */}
                 <div className="form-group">
-                    <label htmlFor="eventDate">Event Date</label>
+                    <label htmlFor="startDate">Start Date</label>
                     <input
                         type="date"
-                        id="eventDate"
-                        name="eventDate"
-                        value={formData.eventDate}
+                        id="startDate"
+                        name="startDate"
+                        value={formData.startDate}
                         onChange={handleChange}
                         required
                     />
                 </div>
 
-                {/* Event Time */}
+                {/* End Date */}
                 <div className="form-group">
-                    <label htmlFor="eventTime">Event Time</label>
+                    <label htmlFor="endDate">End Date</label>
                     <input
-                        type="time"
-                        id="eventTime"
-                        name="eventTime"
-                        value={formData.eventTime}
+                        type="date"
+                        id="endDate"
+                        name="endDate"
+                        value={formData.endDate}
                         onChange={handleChange}
                         required
                     />
                 </div>
 
-                {/* Event Location */}
+                {/* Location */}
                 <div className="form-group">
-                    <label htmlFor="eventLocation">Event Location</label>
+                    <label htmlFor="location">Location</label>
                     <input
                         type="text"
-                        id="eventLocation"
-                        name="eventLocation"
+                        id="location"
+                        name="location"
                         placeholder="Enter the event location"
-                        value={formData.eventLocation}
+                        value={formData.location}
                         onChange={handleChange}
                         required
                     />
                 </div>
 
-                {/* Event Content */}
+                {/* Description */}
                 <div className="form-group">
-                    <label htmlFor="eventContent">Event Content</label>
+                    <label htmlFor="description">Description</label>
                     <textarea
-                        id="eventContent"
-                        name="eventContent"
+                        id="description"
+                        name="description"
                         rows="4"
                         placeholder="Describe the event..."
-                        value={formData.eventContent}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                {/* Attendee Capacity */}
-                <div className="form-group">
-                    <label htmlFor="attendeeCapacity">Attendee Capacity</label>
-                    <input
-                        type="number"
-                        id="attendeeCapacity"
-                        name="attendeeCapacity"
-                        placeholder="Enter maximum attendees"
-                        value={formData.attendeeCapacity}
+                        value={formData.description}
                         onChange={handleChange}
                         required
                     />

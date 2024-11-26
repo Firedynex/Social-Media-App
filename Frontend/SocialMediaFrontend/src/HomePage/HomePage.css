@@ -80,3 +80,21 @@ section h2 {
     color: #fff;
     margin-bottom: 5px;
 }
+.view-all-button {
+    background-color: #000;  /* Black background */
+    color: #fff;             /* White text */
+    border: 2px solid #fff;  /* White border */
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.view-all-button:hover {
+    background-color: #fff;  /* White background on hover */
+    color: #000;             /* Black text on hover */
+    transform: scale(1.1);   /* Slightly grow the button */
+}

@@ -11,6 +11,9 @@ import CreateTextPost from './CreateTextPost/CreateTextPost.jsx'
 import EventCreator from './EventCreator/EventCreator.jsx'
 import UserProfile from './UserProfilePage/UserProfile.jsx'
 import TestHomePage from './TestHomePage/TestHomePage.jsx'
+import AllTextPostsPage from './AllTextPosts/AllTextPosts.jsx'
+import AllEventsPage from './AllEvents/AllEvents.jsx'
+import AllAchievementsPage from './AllAchievements/AllAchievements.jsx'
 
 const router = createBrowserRouter([
   {
@@ -56,6 +59,21 @@ const router = createBrowserRouter([
   {
     path: "/TestHomePage",
     element: <TestHomePage/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: "/AllTextPosts",
+    element: <AllTextPostsPage/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: "AllEvents",
+    element: <AllEventsPage/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: "AllAchievements",
+    element: <AllAchievementsPage/>,
     errorElement: <NotFoundPage/>,
   }
 ])

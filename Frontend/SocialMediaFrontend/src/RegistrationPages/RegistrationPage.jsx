@@ -42,8 +42,7 @@ export default function RegistrationPage() {
   
       // Handle plain text success response
       const successMessage = await response.text();
-      alert(successMessage); // Display server response
-      navigate('/HomePage');
+      navigate('/');
     } catch (err) {
       console.error('There was a problem with the fetch operation:', err.message);
       alert(err.message || 'An error occurred');

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './HomePage.css'; // Importing styles
 import TitleBar from '../UniversalComponents/TitleBar/TitleBar';
 import Cookies from 'js-cookie'; // Importing cookies to retrieve the token
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const HomePage = () => {
     // State variables to hold fetched data
@@ -12,6 +13,7 @@ const HomePage = () => {
     // Retrieve the token from cookies
     const token = Cookies.get('jwtToken');
     console.log(token);
+
     // Fetch data when the component mounts
     useEffect(() => {
         const fetchTextPosts = async () => {
@@ -25,7 +27,8 @@ const HomePage = () => {
                 });
                 const data = await response.json();
                 console.log(data);
-                setTextPosts(data);
+                // Get the last 3 text posts
+                setTextPosts(data.slice(-3));  // Slices the last 3 posts from the array
             } catch (error) {
                 console.error('Error fetching text posts:', error);
             }
@@ -42,7 +45,8 @@ const HomePage = () => {
                 });
                 const data = await response.json();
                 console.log(data);
-                setEvents(data);
+                // Get the last 3 events
+                setEvents(data.slice(-3)); // Slices the last 3 events from the array
             } catch (error) {
                 console.error('Error fetching events:', error);
             }
@@ -59,7 +63,8 @@ const HomePage = () => {
                 });
                 const data = await response.json();
                 console.log(data);
-                setAchievements(data);
+                // Get the last 3 achievements
+                setAchievements(data.slice(-3)); // Slices the last 3 achievements from the array
             } catch (error) {
                 console.error('Error fetching achievements:', error);
             }
@@ -83,13 +88,17 @@ const HomePage = () => {
                         {textPosts.length > 0 ? (
                             textPosts.map((post, index) => (
                                 <div key={index} className="post">
-                                    <p>{post.user.firstName}: {post.textContent}</p>
+                                    <p><strong>{post.user.firstName}:</strong> {post.textContent}</p>
                                 </div>
                             ))
                         ) : (
                             <p>No text posts available.</p>
                         )}
                     </div>
+                    {/* Button to navigate to All Text Posts */}
+                    <Link to="/AllTextPosts">
+                        <button className="view-all-button">View All Text Posts</button>
+                    </Link>
                 </section>
 
                 {/* Events Section */}
@@ -100,14 +109,19 @@ const HomePage = () => {
                             events.map((event, index) => (
                                 <div key={index} className="event">
                                     <h3>{event.title}</h3>
-                                    <p>Dates: {event.startDate} - {event.endDate}</p>
-                                    <p>Location: {event.location}</p>
+                                    <p>{event.description}</p>
+                                    <p><strong>Dates: </strong>{event.startDate} - {event.endDate}</p>
+                                    <p><strong>Location: </strong> {event.location}</p>
                                 </div>
                             ))
                         ) : (
                             <p>No events available.</p>
                         )}
                     </div>
+                    {/* Button to navigate to All Events */}
+                    <Link to="/AllEvents">
+                        <button className="view-all-button">View All Events</button>
+                    </Link>
                 </section>
 
                 {/* Achievements Section */}
@@ -117,7 +131,7 @@ const HomePage = () => {
                         {achievements.length > 0 ? (
                             achievements.map((achievement, index) => (
                                 <div key={index} className="achievement">
-                                    <h3>{achievement.title}</h3>
+                                    <h3><strong>{achievement.title} </strong>- {achievement.user.firstName} {achievement.user.lastName}</h3>
                                     <p>{achievement.description}</p>
                                 </div>
                             ))
@@ -125,6 +139,10 @@ const HomePage = () => {
                             <p>No achievements available.</p>
                         )}
                     </div>
+                    {/* Button to navigate to All Achievements */}
+                    <Link to="/AllAchievements">
+                        <button className="view-all-button">View All Achievements</button>
+                    </Link>
                 </section>
             </main>
         </div>
