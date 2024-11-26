@@ -1,9 +1,5 @@
 package org.circl.dbms.backend.dto;
 
-import java.util.List;
-
-import org.circl.dbms.backend.model.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
