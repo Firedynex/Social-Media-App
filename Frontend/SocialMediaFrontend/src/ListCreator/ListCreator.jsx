@@ -1,8 +1,10 @@
 import InputBox from "../UniversalComponents/InputBox";
+import TitleBar from "../UniversalComponents/TitleBar/TitleBar";
 
 export default function ListCreator() {
   return (
     <>
+    <TitleBar />
         <div className="list-creator-card">
             <div className="page-header">
                 <p>List Creator</p>

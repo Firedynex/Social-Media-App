@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './EventCreator.css';
 import {jwtDecode }from "jwt-decode"; // Correctly imported as default
 import Cookies from "js-cookie";
+import TitleBar from '../UniversalComponents/TitleBar/TitleBar';
 
 const EventCreationPage = () => {
     const [formData, setFormData] = useState({
@@ -73,6 +74,8 @@ const EventCreationPage = () => {
     };
 
     return (
+        <>
+        <TitleBar/>
         <div className="event-creation-page">
             <h1>Create an Event</h1>
             <form onSubmit={handleCreate}>
@@ -150,6 +153,7 @@ const EventCreationPage = () => {
                 </button>
             </form>
         </div>
+        </>
     );
 };
 

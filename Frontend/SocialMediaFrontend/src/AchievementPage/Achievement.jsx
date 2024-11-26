@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // React Router
 import './Achievement.css';
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
+import TitleBar from '../UniversalComponents/TitleBar/TitleBar';
 
 const AchievementsForm = () => {
     const [formData, setFormData] = useState({
@@ -70,6 +71,8 @@ const AchievementsForm = () => {
     };
 
     return (
+        <>
+        <TitleBar />
         <div className="achievements-form">
             <h1>Submit an Achievement</h1>
             {message && <p className="message">{message}</p>}
@@ -114,6 +117,7 @@ const AchievementsForm = () => {
                 </button>
             </form>
         </div>
+        </>
     );
 };
 
