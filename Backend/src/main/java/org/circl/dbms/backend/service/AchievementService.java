@@ -54,4 +54,8 @@ public class AchievementService {
         .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle()))
         .collect(Collectors.toList());
     }
+
+    public List<Achievement> getAllTextPosts() {
+        return achievementRepository.findAll();
+    }
 }
