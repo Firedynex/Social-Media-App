@@ -83,7 +83,7 @@ const HomePage = () => {
                         {textPosts.length > 0 ? (
                             textPosts.map((post, index) => (
                                 <div key={index} className="post">
-                                    {post.content}
+                                    <p>{post.user.firstName}: {post.textContent}</p>
                                 </div>
                             ))
                         ) : (
@@ -100,7 +100,7 @@ const HomePage = () => {
                             events.map((event, index) => (
                                 <div key={index} className="event">
                                     <h3>{event.title}</h3>
-                                    <p>Date: {event.date}</p>
+                                    <p>Dates: {event.startDate} - {event.endDate}</p>
                                     <p>Location: {event.location}</p>
                                 </div>
                             ))
