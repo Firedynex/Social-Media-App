@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class AchievementDto {
     private String email;
-    private String firstName;
-    private String lastName;
+    private String description;
+    private String date;
+    private int likeCounter;
 }

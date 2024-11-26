@@ -1,5 +1,6 @@
 package org.circl.dbms.backend.controller;
 
+import org.circl.dbms.backend.dto.UserDto;
 import org.circl.dbms.backend.model.User;
 import org.circl.dbms.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/{email}")
-    public ResponseEntity<User> getUser(@PathVariable String email) {
+    public ResponseEntity<UserDto> getUser(@PathVariable String email) {
         return ResponseEntity.ok(userService.getUser(email));
     }
 }
