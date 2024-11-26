@@ -1,71 +1,108 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Assuming you are using React Router
+import { useNavigate } from 'react-router-dom'; // React Router
 import './CreateTextPost.css';
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode }from "jwt-decode"; // Correctly imported as default
 import Cookies from "js-cookie";
 
-const TextPostForm = () => {
-    const [textPost, setTextPost] = useState('');
+const AchievementsForm = () => {
+    const [formData, setFormData] = useState({
+        title: '',
+        date: '',
+        description: '',
+    });
     const [message, setMessage] = useState('');
     const navigate = useNavigate(); // React Router navigation
     const token = Cookies.get('jwtToken');
     const decodedToken = jwtDecode(token);
-    const email = decodedToken.sub
+    const email = decodedToken.sub;
 
     const handleChange = (e) => {
-        setTextPost(e.target.value);
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
-    const handleCreate = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!textPost.trim()) {
-            alert('Please enter some text for your post.');
+        const { title, date, description } = formData;
+
+        // Validate inputs
+        if (!title.trim() || !date.trim() || !description.trim()) {
+            alert('Please fill in all fields.');
             return;
         }
 
         try {
-            const response = await fetch('http://localhost:8080/textPost', {
+            const response = await fetch('http://localhost:8080/achievement', {
                 method: 'POST',
                 headers: {
-                    "Authorization": `Bearer ${token}`, 
+                    "Authorization": `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ 
-                    content: textPost,
-                    email: email
-                 }), // Send text post content to the backend
+                body: JSON.stringify({
+                    email: email,
+                    title: title,
+                    date: date,
+                    description: description,
+                }),
             });
 
             if (response.ok) {
-                const data = await response.text();
+                const data = await response.json();
                 console.log(data);
-                alert('Post created successfully!');
+                alert('Achievement submitted successfully!');
                 navigate('/HomePage'); // Navigate to the homepage upon success
             } else {
                 const errorText = await response.text();
                 alert(errorText);
             }
         } catch (error) {
-            console.error('Error during post creation:', error);
-            alert('An error occurred while creating the post. Please try again.');
+            console.error('Error during submission:', error);
+            alert('An error occurred while submitting the achievement. Please try again.');
         }
     };
 
     return (
-        <div className="text-post-form">
-            <h1>Create a Text Post</h1>
+        <div className="achievements-form">
+            <h1>Submit an Achievement</h1>
             {message && <p className="message">{message}</p>}
-            <form onSubmit={handleCreate}>
-                {/* Text Area Field */}
+            <form onSubmit={handleSubmit}>
+                {/* Title Field */}
                 <div className="form-group">
-                    <label htmlFor="textPost">Post Content</label>
+                    <label htmlFor="title">Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Enter the achievement title"
+                        value={formData.title}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                {/* Date Field */}
+                <div className="form-group">
+                    <label htmlFor="date">Achievement Date</label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                {/* Description Field */}
+                <div className="form-group">
+                    <label htmlFor="description">Description</label>
                     <textarea
-                        id="textPost"
-                        name="textPost"
+                        id="description"
+                        name="description"
                         rows="6"
-                        placeholder="Write your text post here..."
-                        value={textPost}
+                        placeholder="Describe your achievement..."
+                        value={formData.description}
                         onChange={handleChange}
                         required
                     />
@@ -80,4 +117,4 @@ const TextPostForm = () => {
     );
 };
 
-export default TextPostForm;
+export default AchievementsForm;
