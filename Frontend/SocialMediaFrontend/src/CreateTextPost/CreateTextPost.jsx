@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Assuming you are using React Router
 import './CreateTextPost.css';
+import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
 
 const TextPostForm = () => {
     const [textPost, setTextPost] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate(); // React Router navigation
+    const token = Cookies.get('jwtToken');
+    const decodedToken = jwtDecode(token);
+    const email = decodedToken.sub
 
     const handleChange = (e) => {
         setTextPost(e.target.value);
@@ -20,17 +25,22 @@ const TextPostForm = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/TextPost', {
+            const response = await fetch('http://localhost:8080/textPost', {
                 method: 'POST',
                 headers: {
+                    "Authorization": `Bearer ${token}`, 
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ content: textPost }), // Send text post content to the backend
+                body: JSON.stringify({ 
+                    content: textPost,
+                    email: email
+                 }), // Send text post content to the backend
             });
 
             if (response.ok) {
                 const data = await response.text();
                 console.log(data);
+                alert('Post created successfully!');
                 navigate('/HomePage'); // Navigate to the homepage upon success
             } else {
                 const errorText = await response.text();
