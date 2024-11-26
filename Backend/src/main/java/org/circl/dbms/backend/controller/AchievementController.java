@@ -30,6 +30,6 @@ public class AchievementController {
 
     @PostMapping
     public ResponseEntity<Achievement> createAchievement(@RequestBody AchievementDto achievementDto) {
-        return ResponseEntity.ok(achievementService.saveAchievement(achievementDto.getEmail(), achievementDto.getDescription(), achievementDto.getDate()));
+        return ResponseEntity.ok(achievementService.saveAchievement(achievementDto.getEmail(), achievementDto.getDescription(), achievementDto.getDate(), achievementDto.getTitle()));
     }
 }

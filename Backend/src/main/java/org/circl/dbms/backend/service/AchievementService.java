@@ -19,7 +19,7 @@ public class AchievementService {
     private final UserRepository userRepository;
     private final AchievementRepository achievementRepository;
 
-    public Achievement saveAchievement(String email, String description, String date) {
+    public Achievement saveAchievement(String email, String description, String date, String title) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
@@ -30,6 +30,7 @@ public class AchievementService {
         .description(description)
         .achievementDate(date)
         .likeCounter(0)
+        .title(title)
         .build();
 
         return achievementRepository.save(achievement);
@@ -43,7 +44,7 @@ public class AchievementService {
 
         return achievementRepository.findByUserId(user.getId())
         .stream()
-        .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter()))
+        .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle()))
         .collect(Collectors.toList());
     }
 }
