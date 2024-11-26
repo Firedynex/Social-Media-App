@@ -31,7 +31,7 @@ public class EventController {
 
     @PostMapping
     public ResponseEntity<Response> createEvent(@RequestBody EventDto eventDto) {
-        return ResponseEntity.ok(eventService.saveEvent(eventDto.getEmail(), eventDto.getStartDate(), eventDto.getEndDate(), eventDto.getLocation(), eventDto.getDescription(), eventDto.getAttendeeCapacity(), eventDto.getAttendeeCount()));
+        return ResponseEntity.ok(eventService.saveEvent(eventDto.getEmail(), eventDto.getStartDate(), eventDto.getEndDate(), eventDto.getLocation(), eventDto.getDescription()));
     }    
 
     @GetMapping("/getall")
