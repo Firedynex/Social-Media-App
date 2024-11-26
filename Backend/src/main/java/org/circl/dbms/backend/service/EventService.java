@@ -56,4 +56,8 @@ public class EventService {
         .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getAttendeeCapacity(), event.getAttendees(), event.getAttendeeCount()))
         .collect(Collectors.toList());
     }
+
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
 }

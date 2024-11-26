@@ -3,6 +3,7 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.TextPostDto;
+import org.circl.dbms.backend.model.TextPost;
 import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.TextPostService;
 import org.springframework.http.ResponseEntity;
@@ -30,5 +31,10 @@ public class TextPostController {
     @PostMapping
     public ResponseEntity<Response> createTextPost(@RequestBody TextPostDto textPostDto) {
         return ResponseEntity.ok(textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent()));
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<TextPost>> getAllTextPosts() {
+        return ResponseEntity.ok(textPostService.getAllTextPosts());
     }
 }

@@ -46,4 +46,8 @@ public class TextPostService {
         .map(post -> new TextPostDto(user.getEmail(), post.getTextContent()))
         .collect(Collectors.toList());
     }
+
+    public List<TextPost> getAllTextPosts() {
+        return textPostRepository.findAll();
+    }
 }
