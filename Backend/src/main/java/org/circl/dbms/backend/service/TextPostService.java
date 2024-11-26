@@ -8,6 +8,7 @@ import org.circl.dbms.backend.model.TextPost;
 import org.circl.dbms.backend.model.User;
 import org.circl.dbms.backend.repository.TextPostRepository;
 import org.circl.dbms.backend.repository.UserRepository;
+import org.circl.dbms.backend.response.Response;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -19,14 +20,19 @@ public class TextPostService {
     private final TextPostRepository textPostRepository;
     private final UserRepository userRepository;
 
-    public void saveTextPost(String email, String content) {
+    public Response saveTextPost(String email, String content) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
         }
         TextPost textPost = TextPost.builder().textContent(content).user(user).build();
         
-        textPostRepository.save(textPost);
+        try {
+            textPostRepository.save(textPost);
+            return new Response(true, "Text Post saved!");
+        } catch (Exception e) {
+            return new Response(false, "Text post save unsuccessful!");
+        }
     }
 
     public List<TextPostDto> getTextPostsByUser(String email) {

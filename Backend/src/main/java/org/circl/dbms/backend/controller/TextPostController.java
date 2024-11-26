@@ -3,7 +3,7 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.TextPostDto;
-import org.circl.dbms.backend.model.TextPost;
+import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.TextPostService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +28,7 @@ public class TextPostController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createTextPost(@RequestBody TextPostDto textPostDto) {
-        textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent());
-        return ResponseEntity.ok("Text posted");
+    public ResponseEntity<Response> createTextPost(@RequestBody TextPostDto textPostDto) {
+        return ResponseEntity.ok(textPostService.saveTextPost(textPostDto.getEmail(), textPostDto.getContent()));
     }
 }

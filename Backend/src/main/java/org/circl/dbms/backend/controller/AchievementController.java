@@ -3,8 +3,7 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.AchievementDto;
-import org.circl.dbms.backend.dto.TextPostDto;
-import org.circl.dbms.backend.model.Achievement;
+import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.AchievementService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +28,7 @@ public class AchievementController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createAchievement(@RequestBody AchievementDto achievementDto) {
-        achievementService.saveAchievement(achievementDto.getEmail(), achievementDto.getDescription(), achievementDto.getDate(), achievementDto.getTitle());
-        return ResponseEntity.ok("Achievement posted");
+    public ResponseEntity<Response> createAchievement(@RequestBody AchievementDto achievementDto) {
+        return ResponseEntity.ok(achievementService.saveAchievement(achievementDto.getEmail(), achievementDto.getDescription(), achievementDto.getDate(), achievementDto.getTitle()));
     }
 }

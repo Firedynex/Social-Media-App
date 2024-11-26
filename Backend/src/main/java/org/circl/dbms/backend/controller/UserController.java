@@ -1,7 +1,6 @@
 package org.circl.dbms.backend.controller;
 
 import org.circl.dbms.backend.dto.UserDto;
-import org.circl.dbms.backend.model.User;
 import org.circl.dbms.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

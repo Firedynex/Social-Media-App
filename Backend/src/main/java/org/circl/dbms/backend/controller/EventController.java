@@ -3,7 +3,7 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.EventDto;
-import org.circl.dbms.backend.model.Event;
+import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.EventService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<Event> createEvent(@RequestBody EventDto eventDto) {
+    public ResponseEntity<Response> createEvent(@RequestBody EventDto eventDto) {
         return ResponseEntity.ok(eventService.saveEvent(eventDto.getEmail(), eventDto.getStartDate(), eventDto.getEndDate(), eventDto.getLocation(), eventDto.getDescription(), eventDto.getAttendeeCapacity(), eventDto.getAttendeeCount()));
     }
 }

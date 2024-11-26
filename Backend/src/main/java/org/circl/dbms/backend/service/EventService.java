@@ -9,6 +9,7 @@ import org.circl.dbms.backend.model.Event;
 import org.circl.dbms.backend.model.User;
 import org.circl.dbms.backend.repository.EventRepository;
 import org.circl.dbms.backend.repository.UserRepository;
+import org.circl.dbms.backend.response.Response;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-    public Event saveEvent(String email, String startDate, String endDate, String location, String description, int attendee_capacity, int attendee_count) {
+    public Response saveEvent(String email, String startDate, String endDate, String location, String description, int attendee_capacity, int attendee_count) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
@@ -35,7 +36,13 @@ public class EventService {
         .attendees(new ArrayList<User>())
         .user(user)
         .build();
-        return eventRepository.save(event);
+
+        try {
+            eventRepository.save(event);
+            return new Response(true, "Event saved successfully!");
+        } catch (Exception e) {
+            return new Response(false, "Event post failed!");
+        }
     }
 
     public List<EventDto> getEventsByUser(String email) {
