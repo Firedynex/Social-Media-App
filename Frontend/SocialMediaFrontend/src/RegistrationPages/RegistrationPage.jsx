@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function RegistrationPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +29,7 @@ export default function RegistrationPage() {
           email,
           firstName,
           lastName,
-          username,
+          // username,
           password,
         }),
       });
@@ -66,10 +66,10 @@ export default function RegistrationPage() {
           <label>Last Name</label>
           <input type="text" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
         </div>
-        <div>
+        {/* <div>
           <label>Username</label>
           <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        </div>
+        </div> */}
         <div>
           <label>Password</label>
           <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />

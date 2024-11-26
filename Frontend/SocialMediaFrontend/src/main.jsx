@@ -9,6 +9,8 @@ import MovieListPage from './MovieListPage/MovieListPage.jsx';
 import HomePage from './HomePage/HomePage.jsx';
 import CreateTextPost from './CreateTextPost/CreateTextPost.jsx'
 import EventCreator from './EventCreator/EventCreator.jsx'
+import UserProfile from './UserProfilePage/UserProfile.jsx'
+import TestHomePage from './TestHomePage/TestHomePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,16 @@ const router = createBrowserRouter([
   {
     path: "/CreateEvent",
     element: <EventCreator/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: `/UserProfilePage/:email`,
+    element: <UserProfile/>,
+    errorElement: <NotFoundPage/>,
+  },
+  {
+    path: "/TestHomePage",
+    element: <TestHomePage/>,
     errorElement: <NotFoundPage/>,
   }
 ])
