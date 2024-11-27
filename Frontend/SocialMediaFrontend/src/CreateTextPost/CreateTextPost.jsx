@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Assuming you are using React 
 import './CreateTextPost.css';
 import {jwtDecode }from "jwt-decode"; // Correctly imported as default
 import Cookies from "js-cookie";
+import TitleBar from '../UniversalComponents/TitleBar/TitleBar';
 
 const TextPostForm = () => {
     const [textPost, setTextPost] = useState('');
@@ -53,6 +54,8 @@ const TextPostForm = () => {
     };
 
     return (
+        <>
+        <TitleBar/>
         <div className="text-post-form">
             <h1>Create a Text Post</h1>
             {message && <p className="message">{message}</p>}
@@ -77,6 +80,7 @@ const TextPostForm = () => {
                 </button>
             </form>
         </div>
+        </>
     );
 };
 

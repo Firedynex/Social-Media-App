@@ -1,35 +1,133 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
+/* Title Bar Styles */
+/* Sticky Navbar */
 .title-bar {
-  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 5%;
+  height: 15vh;
   background-color: black;
   color: white;
   text-shadow: 5px 0 black;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+  /* Sticky Positioning */
+  position: sticky;
+  top: 0;  /* Sticks to the top of the page */
+  z-index: 1000; /* Keeps it on top of other content */
+  transition: background-color 0.3s ease; /* Optional: smooth background change on scroll */
+}
+
+
+/* Left Section (Logo and Text) */
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.title-left img {
+  width: 100px;
+  height: 100px;
+}
+
+#title-name {
+  font-family: Orbitron, sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+/* Center Section (Plus Button) */
+.title-center {
+  display: flex;
+  justify-content: center;
+}
+
+.plus-button {
+  position: relative;
+  font-family: Orbitron, sans-serif;
+  font-size: 2rem;
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5%;
-  height: 15vh;
-  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.title-bar img {
+.plus-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.4);
+}
+
+.dropdown {
   position: absolute;
-  left: 5%;
+  top: 60px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: none;
+  padding: 10px 15px;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
 }
 
-.title-bar #title-name {
-  margin: 0 auto;
+.dropdown a {
+  text-decoration: none;
+  color: white;
+  font-family: Orbitron, sans-serif;
 }
 
-
-
-#title-name {
-  font-family: Orbitron;
-  font-size: 5em;
+.plus-button:hover .dropdown {
+  display: flex;
 }
 
-img{
-  width: 150px;
-  height: 150px;
+/* Right Section (Profile and Logout) */
+.title-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.user-profile-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.logout-button {
+  font-family: Orbitron, sans-serif;
+  font-size: 1rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: white;
+  color: black;
 }

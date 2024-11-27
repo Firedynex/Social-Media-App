@@ -50,7 +50,6 @@ export default function Login() {
 
     return (
         <>
-            <TitleBar />
             <div className="login-card">
                 <div className="page-header">
                     <p>Log in</p>

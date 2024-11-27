@@ -51,7 +51,6 @@ export default function RegistrationPage() {
 
   return (
     <>
-      <TitleBar />
       <form className="sign-in" onSubmit={onSubmit}>
         <div>
           <label>Email</label>
