@@ -1,7 +1,6 @@
 package org.circl.dbms.backend.service;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.circl.dbms.backend.dto.UserDto;
