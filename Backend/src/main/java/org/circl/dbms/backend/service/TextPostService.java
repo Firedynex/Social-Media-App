@@ -25,7 +25,11 @@ public class TextPostService {
         if (user == null) {
             throw new IllegalArgumentException("Invalid User");
         }
-        TextPost textPost = TextPost.builder().textContent(content).user(user).build();
+        TextPost textPost = TextPost.builder()
+                                    .textContent(content)
+                                    .user(user)
+                                    .likeCounter(0)
+                                    .build();
         
         try {
             textPostRepository.save(textPost);
@@ -43,11 +47,25 @@ public class TextPostService {
         
         return textPostRepository.findByUserId(user.getId())
         .stream()
-        .map(post -> new TextPostDto(user.getEmail(), post.getTextContent()))
+        .map(post -> new TextPostDto(user.getEmail(), post.getTextContent(), post.getLikeCounter()))
         .collect(Collectors.toList());
     }
 
     public List<TextPost> getAllTextPosts() {
         return textPostRepository.findAll();
+    }
+
+    public Response likePost(Long postId) {
+        TextPost textPost = textPostRepository.findById(postId).orElse(null);
+        if (textPost == null) {
+            throw new IllegalArgumentException("Invalid post id");
+        }
+        textPost.setLikeCounter(textPost.getLikeCounter()+1);
+        try {
+            textPostRepository.save(textPost);
+            return new Response(true, "Post liked successfully!");
+        } catch (Exception e) {
+            return new Response(false, "Failed to like post!");
+        }
     }
 }

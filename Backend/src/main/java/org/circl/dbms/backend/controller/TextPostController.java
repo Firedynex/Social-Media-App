@@ -37,4 +37,9 @@ public class TextPostController {
     public ResponseEntity<List<TextPost>> getAllTextPosts() {
         return ResponseEntity.ok(textPostService.getAllTextPosts());
     }
+
+    @PostMapping("/like/{postid}")
+    public ResponseEntity<Response> likeTextPost(@PathVariable Long postid) {
+        return ResponseEntity.ok(textPostService.likePost(postid));
+    }
 }

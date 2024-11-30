@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class TextPostDto {
     private String email;
     private String content;
+    private int likeCounter;
 }

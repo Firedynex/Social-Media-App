@@ -27,6 +27,9 @@ public class TextPost {
     @Column(name = "content", nullable = false, length = 280)
     private String textContent;
     
+    @Column(name = "like_counter", nullable = false)
+    private int likeCounter;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
