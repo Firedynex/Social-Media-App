@@ -16,7 +16,5 @@ public class EventDto {
     private String location;
     private String description;
     private String title;
-    // private int attendeeCapacity;
-    // private List<User> attendees;
-    // private int attendeeCount;
+    private int attendeeCount;
 }

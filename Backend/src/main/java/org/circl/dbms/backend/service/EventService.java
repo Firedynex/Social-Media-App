@@ -32,6 +32,7 @@ public class EventService {
         .description(description)
         .title(title)
         .user(user)
+        .attendeeCount(0)
         .build();
 
         try {
@@ -50,11 +51,14 @@ public class EventService {
 
         return eventRepository.findByUserId(user.getId())
         .stream()
-        .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle()))
+        .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle(), event.getAttendeeCount()))
         .collect(Collectors.toList());
     }
 
-    public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+    public List<EventDto> getAllEvents() {
+        return eventRepository.findAll()
+        .stream()
+        .map(event -> new EventDto(event.getUser().getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle(), event.getAttendeeCount()))
+        .collect(Collectors.toList());
     }
 }

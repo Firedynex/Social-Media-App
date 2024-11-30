@@ -38,14 +38,9 @@ public class Event {
 
     @Column(name = "title", nullable = false, length = 280)
     private String title;
-    // @Column(name = "attendee_capacity", nullable = false) 
-    // private int attendeeCapacity;
 
-    // @Column(name = "attendees", nullable = false)
-    // private List<User> attendees;
-
-    // @Column(name = "attendee_count", nullable = false)
-    // private int attendeeCount;
+    @Column(name = "attendee_count", nullable = false)
+    private int attendeeCount;
 
     @ManyToOne
     @JoinColumn(name = "user", nullable = false)

@@ -3,7 +3,6 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.EventDto;
-import org.circl.dbms.backend.model.Event;
 import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.EventService;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +34,7 @@ public class EventController {
     }    
 
     @GetMapping("/getall")
-    public ResponseEntity<List<Event>> getAllEvents() {
+    public ResponseEntity<List<EventDto>> getAllEvents() {
         return ResponseEntity.ok(eventService.getAllEvents());
     }
 }
