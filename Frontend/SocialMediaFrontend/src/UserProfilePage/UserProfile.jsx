@@ -150,6 +150,9 @@ const UserProfile = () => {
           {userPosts && userPosts.map((post, index) => (
             <div key={index} className="card">
               <p className="card-description"><strong>You Said: </strong>{post.content}</p>
+              <div>
+                <p>Likes: {post.likeCounter} </p>
+               </div>
             </div>
           ))}
         </div>

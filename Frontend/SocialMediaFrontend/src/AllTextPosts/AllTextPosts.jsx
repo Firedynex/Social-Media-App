@@ -27,6 +27,30 @@ const AllTextPostsPage = () => {
 
         fetchTextPosts();
     }, [token]);
+    const handleLike = async (postId) => {
+        try {
+          const response = await fetch(`http://localhost:8080/textPost/like/${postId}`, {
+            method: "POST",
+            headers: {
+             "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+          console.log("postId", postId);
+          if (!response.ok) {
+            throw new Error("Failed to like the post");
+          }
+    
+          // Update the like counter in the UI after a successful response
+          setTextPosts((prevPosts) =>
+            prevPosts.map((post) =>
+              post.id === postId ? { ...post, likeCounter: post.likeCounter + 1 } : post
+            )
+          );
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
 
     return (
         <div>
@@ -37,7 +61,12 @@ const AllTextPostsPage = () => {
             {textPosts.length > 0 ? (
                             textPosts.map((post, index) => (
                                 <div key={index} className="post">
-                                    <p><strong>{post.user.firstName}:</strong> {post.textContent}</p>
+                                    <h3><strong>{post.user.firstName}:</strong> {post.textContent}</h3>
+                                    <div> 
+                                    <h4>Likes: {post.likeCounter}</h4>
+                                    <button onClick={() => handleLike(post.id)}>Like</button>
+            
+                                    </div>
                                 </div>
                             ))
                         ) : (

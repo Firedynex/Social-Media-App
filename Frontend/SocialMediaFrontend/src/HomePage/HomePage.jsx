@@ -9,6 +9,8 @@ const HomePage = () => {
     const [textPosts, setTextPosts] = useState([]);
     const [events, setEvents] = useState([]);
     const [achievements, setAchievements] = useState([]);
+    const [guestCount, setGuestCount] = useState({});
+
 
     // Retrieve the token from cookies
     const token = Cookies.get('jwtToken');
@@ -76,6 +78,69 @@ const HomePage = () => {
         fetchAchievements();
     }, [token]); // Re-fetch if the token changes
 
+    const handleLike = async (postId) => {
+        try {
+          const response = await fetch(`http://localhost:8080/textPost/like/${postId}`, {
+            method: "POST",
+            headers: {
+             "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+          console.log("postId", postId);
+          if (!response.ok) {
+            throw new Error("Failed to like the post");
+          }
+    
+          // Update the like counter in the UI after a successful response
+          setTextPosts((prevPosts) =>
+            prevPosts.map((post) =>
+              post.id === postId ? { ...post, likeCounter: post.likeCounter + 1 } : post
+            )
+          );
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
+
+
+      const handleGuestAmountChange = (eventId, value) => {
+        setGuestCount((prev) => ({ ...prev, [eventId]: value }));
+      };
+
+const handleAddGuests = async (eventId) => {
+    const guestAmount = guestCount[eventId] || 0;
+
+    try {
+      const response = await fetch("http://localhost:8080/attendees", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ eventId, guestCount: parseInt(guestAmount, 10) }),
+      });
+      console.log("eventId", eventId);
+      console.log("guestAmount", guestAmount);
+
+      if (!response.ok) {
+        throw new Error("Failed to add guests to the event");
+      }
+      setEvents((prevEvents) =>
+        prevEvents.map((event) =>
+            event.eventId === eventId
+                ? { ...event, attendeeCount: event.attendeeCount + parseInt(guestAmount, 10) }
+                : event
+        )
+    );
+
+      setGuestCount((prev) => ({ ...prev, [eventId]: "" })); // Clear input after successful submission
+      
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
     return (
         <div className="homepage">
             <TitleBar />
@@ -88,7 +153,12 @@ const HomePage = () => {
                         {textPosts.length > 0 ? (
                             textPosts.map((post, index) => (
                                 <div key={index} className="post">
-                                    <p><strong>{post.user.firstName}:</strong> {post.textContent}</p>
+                                    <h3><strong>{post.user.firstName}:</strong> {post.textContent}</h3>
+                                    <div> 
+                                    <h4>Likes: {post.likeCounter}</h4>
+                                    <button onClick={() => handleLike(post.id)}>Like</button>
+            
+                                    </div>
                                 </div>
                             ))
                         ) : (
@@ -112,6 +182,14 @@ const HomePage = () => {
                                     <p>{event.description}</p>
                                     <p><strong>Dates: </strong>{event.startDate} - {event.endDate}</p>
                                     <p><strong>Location: </strong> {event.location}</p>
+                                    <p><strong>Attendees: </strong> {event.attendeeCount}</p>
+                                    <input
+                                    type="number"
+                                    placeholder="Guest Amount"
+                                    value={guestCount[event.eventId] || ""}
+                                    onChange={(e) => handleGuestAmountChange(event.eventId, e.target.value)}
+                                    />
+                                    <button onClick={() => handleAddGuests(event.eventId)}>Add Guests</button>
                                 </div>
                             ))
                         ) : (
