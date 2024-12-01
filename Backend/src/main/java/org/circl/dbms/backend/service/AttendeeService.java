@@ -33,8 +33,6 @@ public class AttendeeService {
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
 
         Attendee attendee = Attendee.builder()
-                .firstName(attendeeDto.getFirstName())
-                .lastName(attendeeDto.getLastName())
                 .guestCount(attendeeDto.getGuestCount())
                 .event(event)
                 .build();
@@ -60,8 +58,6 @@ public class AttendeeService {
         return attendeeRepository.findByEventId(eventId)
                 .stream()
                 .map(attendee -> AttendeeDto.builder()
-                        .firstName(attendee.getFirstName())
-                        .lastName(attendee.getLastName())
                         .guestCount(attendee.getGuestCount())
                         .eventId(eventId)
                         .build())

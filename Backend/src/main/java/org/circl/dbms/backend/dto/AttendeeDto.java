@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AttendeeDto {
-    private String firstName;
-    private String lastName;
+    // private String firstName;
+    // private String lastName;
     private int guestCount;
     private int eventId;
 }

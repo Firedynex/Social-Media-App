@@ -27,11 +27,11 @@ public class Attendee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "first_name", nullable = false, length = 100)
-    private String firstName;
+    // @Column(name = "first_name", nullable = false, length = 100)
+    // private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 100)
-    private String lastName;
+    // @Column(name = "last_name", nullable = false, length = 100)
+    // private String lastName;
 
     @Column(name = "guest_count", nullable = false)
     private int guestCount;
