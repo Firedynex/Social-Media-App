@@ -20,4 +20,5 @@ public class EventDto {
     private String description;
     private String title;
     private int attendeeCount;
+    private int eventId;
 }

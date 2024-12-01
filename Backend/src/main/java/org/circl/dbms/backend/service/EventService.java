@@ -69,7 +69,7 @@ public class EventService {
 
         return eventRepository.findByUserId(user.getId())
         .stream()
-        .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle(), event.getAttendeeCount()))
+        .map(event -> new EventDto(user.getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle(), event.getAttendeeCount(), event.getId()))
         .collect(Collectors.toList());
     }
 
@@ -80,7 +80,7 @@ public class EventService {
     public List<EventDto> getAllEvents() {
         return eventRepository.findAll()
         .stream()
-        .map(event -> new EventDto(event.getUser().getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle(), event.getAttendeeCount()))
+        .map(event -> new EventDto(event.getUser().getEmail(), event.getStartDate(), event.getEndDate(), event.getLocation(), event.getDescription(), event.getTitle(), event.getAttendeeCount(), event.getId()))
         .collect(Collectors.toList());
     }
 }
