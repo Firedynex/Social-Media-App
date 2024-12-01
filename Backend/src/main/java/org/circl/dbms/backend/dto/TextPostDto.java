@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Text post data transfer object class.
+ */
 @Data
 @Builder
 @AllArgsConstructor

@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Service class for events.
+ */
 @Service
 @RequiredArgsConstructor
 public class EventService {
@@ -20,6 +23,16 @@ public class EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
+    /**
+     * Creates and saves an event into the database.
+     * @param email Email for the author (user) of the event.
+     * @param startDate Start date of the event.
+     * @param endDate End date of the event.
+     * @param location Location of the event.
+     * @param description Description of the event.
+     * @param title Title of the event.
+     * @return Response on whether the event was successfully saved to the database or not.
+     */
     public Response saveEvent(String email, String startDate, String endDate, String location, String description, String title) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
@@ -43,6 +56,11 @@ public class EventService {
         }
     }
 
+    /**
+     * Gets all the events for a specific user.
+     * @param email Email for the user.
+     * @return List of all the events associated with that user.
+     */
     public List<EventDto> getEventsByUser(String email) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
@@ -55,6 +73,10 @@ public class EventService {
         .collect(Collectors.toList());
     }
 
+    /**
+     * Gets all the events in the database regardless of user.
+     * @return List of all the events.
+     */
     public List<EventDto> getAllEvents() {
         return eventRepository.findAll()
         .stream()

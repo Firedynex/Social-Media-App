@@ -13,6 +13,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Text post model that models text posts in the database.
+ */
 @Data
 @Entity
 @Builder

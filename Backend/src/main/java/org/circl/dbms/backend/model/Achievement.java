@@ -13,6 +13,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity model for achievements to model in the database.
+ */
 @Builder
 @Data
 @Entity

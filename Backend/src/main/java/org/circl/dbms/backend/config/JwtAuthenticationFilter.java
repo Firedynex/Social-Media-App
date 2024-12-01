@@ -18,6 +18,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Filter class for processing incoming HTTP requests and validating JWT tokens.
+ * This filter runs once per request and ensures that a valid JWT is present in the
+ * Authorization header before allowing access to secure endpoints.
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
@@ -25,6 +30,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
+    /**
+     * Filters incoming HTTP requests to validate the JWT token and set the authentication context.
+     * @param request the incoming HTTP request.
+     * @param response the outgoing HTTP response.
+     * @param filterChain the filter chain to pass the request and response to the next filter.
+     * @throws ServletException if an error occurs during request processing.
+     * @throws IOException if an input or output error occurs during request processing.
+     */
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {

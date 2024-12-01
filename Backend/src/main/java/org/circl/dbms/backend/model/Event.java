@@ -13,6 +13,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Event model that models events in the database.
+ */
 @Data
 @Builder
 @AllArgsConstructor

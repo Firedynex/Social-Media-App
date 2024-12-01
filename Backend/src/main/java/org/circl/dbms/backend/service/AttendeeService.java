@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Service class for attendees system.
+ */
 @Service
 @RequiredArgsConstructor
 public class AttendeeService {
@@ -20,6 +23,11 @@ public class AttendeeService {
     private final AttendeeRepository attendeeRepository;
     private final EventRepository eventRepository;
 
+    /**
+     * Creates and adds an attendee to the database.
+     * @param attendeeDto Body for the attendee object.
+     * @return Response on whether the attendee was successfully added to the database or not.
+     */
     public Response addAttendee(AttendeeDto attendeeDto) {
         Event event = eventRepository.findById(attendeeDto.getEventId())
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
@@ -43,6 +51,11 @@ public class AttendeeService {
         }
     }
 
+    /**
+     * Gets all the attendees for a specific event.
+     * @param eventId Id for the event.
+     * @return List of all the attendees for the event.
+     */
     public List<AttendeeDto> getAttendeesByEvent(int eventId) {
         return attendeeRepository.findByEventId(eventId)
                 .stream()

@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO object that models data transfer object for achievement.
+ */
 @Data
 @Builder
 @AllArgsConstructor

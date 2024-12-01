@@ -26,6 +26,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ * User model that models users in the database.
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -66,31 +69,54 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    /**
+     * Gets the users role.
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    /**
+     * Gets the users email.
+     * @return String of the user's email.
+     */
     @Override
     public String getUsername() {
         return this.email;
     }
 
+    /**
+     * Checks if the account is expired or not.
+     * @return boolean Whether the account is expired or not.
+     */
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    /**
+     * Checks if the account is locked or not.
+     * @return boolean Whether the account is locked or not.
+     */
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    /**
+     * Checks whether the credentials are expired or not.
+     * @return boolean Whether the credentials are expired or not.
+     */
     @Override 
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    /**
+     * Checks whether the account is enabled or not.
+     * @return boolean Whether the account is enabled or not.
+     */
     @Override
     public boolean isEnabled() {
         return true;

@@ -13,6 +13,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity model to model attendees in the database.
+ */
 @Data
 @Builder
 @AllArgsConstructor

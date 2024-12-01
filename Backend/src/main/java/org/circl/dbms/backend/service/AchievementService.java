@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Service class for achievements.
+ */
 @Service
 @RequiredArgsConstructor
 public class AchievementService {
@@ -20,6 +23,14 @@ public class AchievementService {
     private final UserRepository userRepository;
     private final AchievementRepository achievementRepository;
 
+    /**
+     * Creates and saves the achievement in the database.
+     * @param email Email for the author (user) of the achievement.
+     * @param description Description of the achievement.
+     * @param date Date of the achievement.
+     * @param title Title of the achievement.
+     * @return Response on whether the achievement was successfully saved in the database or not.
+     */
     public Response saveAchievement(String email, String description, String date, String title) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
@@ -43,6 +54,11 @@ public class AchievementService {
         }
     }
 
+    /**
+     * Gets the achievements for a specific user.
+     * @param email Email for the desired user.
+     * @return List of all the achievements for the user.
+     */
     public List<AchievementDto> getAchievementsByUser(String email) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
@@ -55,7 +71,11 @@ public class AchievementService {
         .collect(Collectors.toList());
     }
 
-    public List<Achievement> getAllTextPosts() {
+    /**
+     * Gets all the achievements in the database regardless of user.
+     * @return List of all achievements in the database.
+     */
+    public List<Achievement> getAllAchievements() {
         return achievementRepository.findAll();
     }
 }

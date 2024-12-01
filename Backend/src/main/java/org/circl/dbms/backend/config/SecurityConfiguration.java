@@ -16,6 +16,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Configuration class for setting up security settings for the application, 
+ * including CORS, authentication, and session management.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -25,6 +29,12 @@ public class SecurityConfiguration {
 
     private final AuthenticationProvider authenticationProvider;
 
+    /**
+     * Configures the application's security filter chain. Allows any request to /auth endpoints. All other endpoints must use authentication.
+     * @param http the HttpSecurity object used to configure web-based security.
+     * @return a SecurityFilterChain bean that defines the security configuration for the application.
+     * @throws Exception if an error occurs while configuring security.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
@@ -47,6 +57,10 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    /**
+     * Configures Cross-Origin Resource Sharing (CORS) settings for the application.
+     * @return a CorsConfigurationSource bean that defines CORS policies.
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

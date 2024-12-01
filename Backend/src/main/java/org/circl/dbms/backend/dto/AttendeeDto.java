@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Attendee Data Transfer Object class.
+ */
 @Data
 @Builder
 @AllArgsConstructor

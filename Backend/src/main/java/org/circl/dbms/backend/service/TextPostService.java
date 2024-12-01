@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Service class for text posts.
+ */
 @Service
 @RequiredArgsConstructor
 public class TextPostService {
@@ -20,6 +23,12 @@ public class TextPostService {
     private final TextPostRepository textPostRepository;
     private final UserRepository userRepository;
 
+    /**
+     * Creates and saves text posts to the database.
+     * @param email Email of the user to save the text post for.
+     * @param content Content of the text post.
+     * @return Response on the success status of the save.
+     */
     public Response saveTextPost(String email, String content) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
@@ -39,6 +48,11 @@ public class TextPostService {
         }
     }
 
+    /**
+     * Gets all the text posts for a specific user.
+     * @param email Email of the desired user.
+     * @return List of all the text posts associated with that user.
+     */
     public List<TextPostDto> getTextPostsByUser(String email) {
         User user = userRepository.findByEmail(email).get();
         if (user == null) {
@@ -51,10 +65,19 @@ public class TextPostService {
         .collect(Collectors.toList());
     }
 
+    /**
+     * Gets all the text posts in the database regardless of user.
+     * @return List of all text posts in the database.
+     */
     public List<TextPost> getAllTextPosts() {
         return textPostRepository.findAll();
     }
 
+    /**
+     * Likes a post and updates the like counter for a post in the database.
+     * @param postId Id of the post to be liked.
+     * @return Response on whether liking the post was successful or not.
+     */
     public Response likePost(Long postId) {
         TextPost textPost = textPostRepository.findById(postId).orElse(null);
         if (textPost == null) {

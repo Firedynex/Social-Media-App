@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Controller class to handle REST endpoints for authentication.
+ */
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
