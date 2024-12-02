@@ -1,10 +1,6 @@
 package org.circl.dbms.backend.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.circl.dbms.backend.dto.AttendeeDto;
-import org.circl.dbms.backend.model.Attendee;
 import org.circl.dbms.backend.model.Event;
 import org.circl.dbms.backend.repository.EventRepository;
 import org.circl.dbms.backend.response.Response;
