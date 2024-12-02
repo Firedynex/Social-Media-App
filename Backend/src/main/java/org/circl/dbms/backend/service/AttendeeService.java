@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.circl.dbms.backend.dto.AttendeeDto;
 import org.circl.dbms.backend.model.Attendee;
 import org.circl.dbms.backend.model.Event;
-import org.circl.dbms.backend.repository.AttendeeRepository;
 import org.circl.dbms.backend.repository.EventRepository;
 import org.circl.dbms.backend.response.Response;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AttendeeService {
 
-    private final AttendeeRepository attendeeRepository;
     private final EventRepository eventRepository;
 
     /**
@@ -32,13 +30,13 @@ public class AttendeeService {
         Event event = eventRepository.findById(attendeeDto.getEventId())
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
 
-        Attendee attendee = Attendee.builder()
-                .guestCount(attendeeDto.getGuestCount())
-                .event(event)
-                .build();
+        // Attendee attendee = Attendee.builder()
+        //         .guestCount(attendeeDto.getGuestCount())
+        //         .event(event)
+        //         .build();
 
         try {
-            attendeeRepository.save(attendee);
+            // attendeeRepository.save(attendee);
 
             // Update the attendee count in the Event
             event.setAttendeeCount(event.getAttendeeCount() + attendeeDto.getGuestCount());
@@ -47,20 +45,5 @@ public class AttendeeService {
         } catch (Exception e) {
             return new Response(false, "Error adding attendee");
         }
-    }
-
-    /**
-     * Gets all the attendees for a specific event.
-     * @param eventId Id for the event.
-     * @return List of all the attendees for the event.
-     */
-    public List<AttendeeDto> getAttendeesByEvent(int eventId) {
-        return attendeeRepository.findByEventId(eventId)
-                .stream()
-                .map(attendee -> AttendeeDto.builder()
-                        .guestCount(attendee.getGuestCount())
-                        .eventId(eventId)
-                        .build())
-                .collect(Collectors.toList());
     }
 }

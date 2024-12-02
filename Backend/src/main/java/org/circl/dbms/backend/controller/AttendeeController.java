@@ -1,7 +1,5 @@
 package org.circl.dbms.backend.controller;
 
-import java.util.List;
-
 import org.circl.dbms.backend.dto.AttendeeDto;
 import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.AttendeeService;
@@ -28,16 +26,5 @@ public class AttendeeController {
     @PostMapping
     public ResponseEntity<Response> addAttendee(@RequestBody AttendeeDto attendeeDto) {
         return ResponseEntity.ok(attendeeService.addAttendee(attendeeDto));
-    }
-
-    /**
-     * Gets all the attendees for a specific event.
-     * @param eventId Used to search for a specific event.
-     * @return All of the attendees for the specific event.
-     */
-    @GetMapping("/event/{eventId}")
-    public ResponseEntity<List<AttendeeDto>> getAttendeesByEvent(@PathVariable int eventId) {
-        List<AttendeeDto> attendees = attendeeService.getAttendeesByEvent(eventId);
-        return ResponseEntity.ok(attendees);
     }
 }
