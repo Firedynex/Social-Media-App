@@ -69,8 +69,11 @@ public class TextPostService {
      * Gets all the text posts in the database regardless of user.
      * @return List of all text posts in the database.
      */
-    public List<TextPost> getAllTextPosts() {
-        return textPostRepository.findAll();
+    public List<TextPostDto> getAllTextPosts() {
+        return textPostRepository.findAll()
+        .stream()
+        .map(textPost -> new TextPostDto(textPost.getUser().getEmail(), textPost.getTextContent(), textPost.getLikeCounter()))
+        .collect(Collectors.toList());
     }
 
     /**

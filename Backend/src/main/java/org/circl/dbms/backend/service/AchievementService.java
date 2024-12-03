@@ -75,7 +75,10 @@ public class AchievementService {
      * Gets all the achievements in the database regardless of user.
      * @return List of all achievements in the database.
      */
-    public List<Achievement> getAllAchievements() {
-        return achievementRepository.findAll();
+    public List<AchievementDto> getAllAchievements() {
+        return achievementRepository.findAll()
+        .stream()
+        .map(achievement -> new AchievementDto(achievement.getUser().getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle()))
+        .collect(Collectors.toList());
     }
 }

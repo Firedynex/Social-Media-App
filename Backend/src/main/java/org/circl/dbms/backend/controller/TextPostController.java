@@ -51,7 +51,7 @@ public class TextPostController {
      * @return Response entity with all the text posts.
      */
     @GetMapping("/getall")
-    public ResponseEntity<List<TextPost>> getAllTextPosts() {
+    public ResponseEntity<List<TextPostDto>> getAllTextPosts() {
         return ResponseEntity.ok(textPostService.getAllTextPosts());
     }
 

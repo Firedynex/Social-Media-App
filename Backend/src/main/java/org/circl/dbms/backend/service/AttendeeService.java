@@ -26,14 +26,7 @@ public class AttendeeService {
         Event event = eventRepository.findById(attendeeDto.getEventId())
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
 
-        // Attendee attendee = Attendee.builder()
-        //         .guestCount(attendeeDto.getGuestCount())
-        //         .event(event)
-        //         .build();
-
         try {
-            // attendeeRepository.save(attendee);
-
             // Update the attendee count in the Event
             event.setAttendeeCount(event.getAttendeeCount() + attendeeDto.getGuestCount());
             eventRepository.save(event);

@@ -51,7 +51,7 @@ public class AchievementController {
      * @return A response entity with all of the achievements in the database.
      */
     @GetMapping("/getall")
-    public ResponseEntity<List<Achievement>> getAllAchievements() {
+    public ResponseEntity<List<AchievementDto>> getAllAchievements() {
         return ResponseEntity.ok(achievementService.getAllAchievements());
     }
 }
