@@ -1,4 +1,4 @@
-.user-profile {
+/* .user-profile {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -102,4 +102,78 @@
 
 .card-description + p {
   margin-top: 10px;
+} */
+
+
+/* General styling remains the same */
+.user-profile {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background-color: #000;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid #fff;
+  background-color: #121212;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+/* Dropdown Section */
+.dropdown-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+.dropdown-button:hover {
+  background-color: #444;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.dropdown-content a:hover {
+  text-decoration: underline;
 }

@@ -12,6 +12,7 @@ import UserProfile from './UserProfilePage/UserProfile.jsx'
 import AllTextPostsPage from './AllTextPosts/AllTextPosts.jsx'
 import AllEventsPage from './AllEvents/AllEvents.jsx'
 import AllAchievementsPage from './AllAchievements/AllAchievements.jsx'
+import ViewProfile from './ViewProfilePage/ViewProfile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,11 @@ const router = createBrowserRouter([
     path: "/UserProfilePage",
     element: <UserProfile/>,
     errorElement: <NotFoundPage/>,
+  },
+  {
+    path:"/ViewProfilePage/:email",
+    element: <ViewProfile/>,
+    errorElement: <NotFoundPage/>
   }
 ])
 
