@@ -3,7 +3,6 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.TextPostDto;
-import org.circl.dbms.backend.model.TextPost;
 import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.TextPostService;
 import org.springframework.http.ResponseEntity;

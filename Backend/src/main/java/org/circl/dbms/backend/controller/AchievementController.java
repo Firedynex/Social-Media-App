@@ -3,7 +3,6 @@ package org.circl.dbms.backend.controller;
 import java.util.List;
 
 import org.circl.dbms.backend.dto.AchievementDto;
-import org.circl.dbms.backend.model.Achievement;
 import org.circl.dbms.backend.response.Response;
 import org.circl.dbms.backend.service.AchievementService;
 import org.springframework.http.ResponseEntity;
