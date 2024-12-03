@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TextPostDto {
+    private Long id;
     private String email;
     private String content;
     private int likeCounter;

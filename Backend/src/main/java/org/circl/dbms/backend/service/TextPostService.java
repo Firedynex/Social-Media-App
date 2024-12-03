@@ -61,7 +61,7 @@ public class TextPostService {
         
         return textPostRepository.findByUserId(user.getId())
         .stream()
-        .map(post -> new TextPostDto(user.getEmail(), post.getTextContent(), post.getLikeCounter(), user.getFirstName(), user.getLastName()))
+        .map(post -> new TextPostDto(post.getId(), user.getEmail(), post.getTextContent(), post.getLikeCounter(), user.getFirstName(), user.getLastName()))
         .collect(Collectors.toList());
     }
 
@@ -72,7 +72,7 @@ public class TextPostService {
     public List<TextPostDto> getAllTextPosts() {
         return textPostRepository.findAll()
         .stream()
-        .map(textPost -> new TextPostDto(textPost.getUser().getEmail(), textPost.getTextContent(), textPost.getLikeCounter(), textPost.getUser().getFirstName(), textPost.getUser().getLastName()))
+        .map(textPost -> new TextPostDto(textPost.getId(), textPost.getUser().getEmail(), textPost.getTextContent(), textPost.getLikeCounter(), textPost.getUser().getFirstName(), textPost.getUser().getLastName()))
         .collect(Collectors.toList());
     }
 
