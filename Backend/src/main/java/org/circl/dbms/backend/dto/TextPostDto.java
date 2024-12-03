@@ -16,4 +16,6 @@ public class TextPostDto {
     private String email;
     private String content;
     private int likeCounter;
+    private String firstName;
+    private String lastName;
 }

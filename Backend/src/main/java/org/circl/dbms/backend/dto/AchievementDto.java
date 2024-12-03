@@ -18,4 +18,6 @@ public class AchievementDto {
     private String date;
     private int likeCounter;
     private String title;
+    private String firstName;
+    private String lastName;
 }

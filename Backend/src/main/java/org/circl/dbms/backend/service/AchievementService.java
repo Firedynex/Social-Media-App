@@ -67,7 +67,7 @@ public class AchievementService {
 
         return achievementRepository.findByUserId(user.getId())
         .stream()
-        .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle()))
+        .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle(), achievement.getUser().getFirstName(), achievement.getUser().getLastName()))
         .collect(Collectors.toList());
     }
 
@@ -78,7 +78,7 @@ public class AchievementService {
     public List<AchievementDto> getAllAchievements() {
         return achievementRepository.findAll()
         .stream()
-        .map(achievement -> new AchievementDto(achievement.getUser().getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle()))
+        .map(achievement -> new AchievementDto(achievement.getUser().getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle(), achievement.getUser().getFirstName(), achievement.getUser().getLastName()))
         .collect(Collectors.toList());
     }
 }
