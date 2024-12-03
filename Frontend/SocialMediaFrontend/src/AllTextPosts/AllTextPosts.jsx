@@ -61,7 +61,7 @@ const AllTextPostsPage = () => {
             {textPosts.length > 0 ? (
                             textPosts.map((post, index) => (
                                 <div key={index} className="post">
-                                    <h3><strong>{post.user.firstName}:</strong> {post.textContent}</h3>
+                                    <h3><strong><a href={`/ViewProfilePage/${post.email}`}>{post.firstName}</a>:</strong> {post.content}</h3>
                                     <div> 
                                     <h4>Likes: {post.likeCounter}</h4>
                                     <button onClick={() => handleLike(post.id)}>Like</button>

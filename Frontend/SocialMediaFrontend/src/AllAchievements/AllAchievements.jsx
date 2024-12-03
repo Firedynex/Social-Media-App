@@ -36,7 +36,7 @@ const AllAchievementsPage = () => {
             {achievements.length > 0 ? (
                             achievements.map((achievement, index) => (
                                 <div key={index} className="achievement">
-                                    <h3><strong>{achievement.title} </strong>- {achievement.user.firstName} {achievement.user.lastName}</h3>
+                                    <h3><strong>{achievement.title} </strong>- <a href={`/ViewProfilePage/${achievement.email}`}>{achievement.firstName} {achievement.lastName}</a></h3>
         
                                     <p>{achievement.description}</p>
                                 </div>

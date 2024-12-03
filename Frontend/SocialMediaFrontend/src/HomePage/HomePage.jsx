@@ -153,7 +153,7 @@ const handleAddGuests = async (eventId) => {
                         {textPosts.length > 0 ? (
                             textPosts.map((post, index) => (
                                 <div key={index} className="post">
-                                    <h3><strong><a href={`ViewProfilePage/${post.user.email}`}>{post.user.firstName}:</a></strong> {post.textContent}</h3>
+                                    <h3><strong><a href={`ViewProfilePage/${post.email}`}>{post.firstName}:</a></strong> {post.content}</h3>
                                     <div> 
                                     <h4>Likes: {post.likeCounter}</h4>
                                     <button onClick={() => handleLike(post.id)}>Like</button>
@@ -209,7 +209,7 @@ const handleAddGuests = async (eventId) => {
                         {achievements.length > 0 ? (
                             achievements.map((achievement, index) => (
                                 <div key={index} className="achievement">
-                                    <h3><strong>{achievement.title} </strong>- <a href={`ViewProfilePage/${achievement.user.email}`}>{achievement.user.firstName} {achievement.user.lastName}</a></h3>
+                                    <h3><strong>{achievement.title} </strong>- <a href={`ViewProfilePage/${achievement.email}`}>{achievement.firstName} {achievement.lastName}</a></h3>
                                     <p>{achievement.description}</p>
                                 </div>
                             ))
