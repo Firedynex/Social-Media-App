@@ -34,9 +34,6 @@ public class Achievement {
     @Column(name = "date", nullable = false)
     private String achievementDate;
 
-    @Column(name = "likeCounter", nullable = false)
-    private int likeCounter;
-
     @Column(name = "title", nullable = false)
     private String title;
 

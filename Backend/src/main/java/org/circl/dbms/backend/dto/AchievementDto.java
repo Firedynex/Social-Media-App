@@ -16,7 +16,6 @@ public class AchievementDto {
     private String email;
     private String description;
     private String date;
-    private int likeCounter;
     private String title;
     private String firstName;
     private String lastName;

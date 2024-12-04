@@ -41,7 +41,6 @@ public class AchievementService {
         .user(user)
         .description(description)
         .achievementDate(date)
-        .likeCounter(0)
         .title(title)
         .build();
 
@@ -67,7 +66,7 @@ public class AchievementService {
 
         return achievementRepository.findByUserId(user.getId())
         .stream()
-        .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle(), achievement.getUser().getFirstName(), achievement.getUser().getLastName()))
+        .map(achievement -> new AchievementDto(user.getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getTitle(), achievement.getUser().getFirstName(), achievement.getUser().getLastName()))
         .collect(Collectors.toList());
     }
 
@@ -78,7 +77,7 @@ public class AchievementService {
     public List<AchievementDto> getAllAchievements() {
         return achievementRepository.findAll()
         .stream()
-        .map(achievement -> new AchievementDto(achievement.getUser().getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getLikeCounter(), achievement.getTitle(), achievement.getUser().getFirstName(), achievement.getUser().getLastName()))
+        .map(achievement -> new AchievementDto(achievement.getUser().getEmail(), achievement.getDescription(), achievement.getAchievementDate(), achievement.getTitle(), achievement.getUser().getFirstName(), achievement.getUser().getLastName()))
         .collect(Collectors.toList());
     }
 }
